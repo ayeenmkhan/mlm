@@ -1,0 +1,27 @@
+<files ".htaccess">
+	order allow,deny
+	deny from all
+</files>
+
+RewriteEngine on
+Options +FollowSymlinks
+#RewriteBase /
+
+# EXISTING DIRECTORIES
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([-_a-zA-Z0-9]+)/(.*)/$ index.php?ref=$1&redir=$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([-_a-zA-Z0-9]+)/(.*)$ index.php?ref=$1&redir=$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([-_a-zA-Z0-9]+)/$ index.php?ref=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([-_a-zA-Z0-9]+)$ index.php?ref=$0 [L]
+
+# RewriteRule ^([-_a-zA-Z0-9]+) index.php?ref=$1

@@ -1,0 +1,140 @@
+[19-Oct-2020 07:29:19 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[19-Oct-2020 07:29:19 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/index.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[19-Oct-2020 09:55:24 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\PHPMailer' not found in /home/fitnessd/public_html/bundle-package/common/mailer.do.php:45
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/admin/adduser.php(50): delivermail('mbr_reg', '8', Array)
+#1 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 45
+[19-Oct-2020 09:59:31 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\PHPMailer' not found in /home/fitnessd/public_html/bundle-package/common/mailer.do.php:45
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/admin/adduser.php(50): delivermail('mbr_reg', '9', Array)
+#1 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 45
+[19-Oct-2020 10:51:55 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\PHPMailer' not found in /home/fitnessd/public_html/bundle-package/common/mailer.do.php:48
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/admin/adduser.php(50): delivermail('mbr_reg', '15', Array)
+#1 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 48
+[19-Oct-2020 10:55:18 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\PHPMailer' not found in /home/fitnessd/public_html/bundle-package/common/mailer.do.php:48
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/admin/adduser.php(50): delivermail('mbr_reg', '16', Array)
+#1 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 48
+[19-Oct-2020 10:57:18 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPMailer\PHPMailer\PHPMailer' not found in /home/fitnessd/public_html/bundle-package/common/mailer.do.php:48
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/admin/adduser.php(50): delivermail('mbr_reg', '17', Array)
+#1 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 48
+[20-Oct-2020 06:45:35 UTC] PHP Warning:  require(C:\localhost/assets/fellow/phpmailer/Exception.php): failed to open stream: No such file or directory in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 6
+[20-Oct-2020 06:45:35 UTC] PHP Warning:  require(C:\localhost/assets/fellow/phpmailer/Exception.php): failed to open stream: No such file or directory in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 6
+[20-Oct-2020 06:45:35 UTC] PHP Fatal error:  require(): Failed opening required 'C:\localhost/assets/fellow/phpmailer/Exception.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/fitnessd/public_html/bundle-package/common/mailer.do.php on line 6
+[20-Oct-2020 06:47:58 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[20-Oct-2020 06:47:58 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/adduser.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[20-Oct-2020 06:48:08 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[20-Oct-2020 06:48:08 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/index.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[20-Oct-2020 06:48:11 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[20-Oct-2020 06:48:11 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/index.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[20-Oct-2020 06:48:12 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[20-Oct-2020 06:48:12 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/login.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[20-Oct-2020 06:48:15 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[20-Oct-2020 06:48:15 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home/fitnessd/public_html/bundle-package/admin/login.php(2): include_once('/home/fitnessd/...')
+#2 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 18
+[20-Oct-2020 06:50:43 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/common/mailer.do.php:78) in /home/fitnessd/public_html/bundle-package/admin/adduser.php on line 65
+[22-Oct-2020 08:02:18 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/admin/addBundle.php:41) in /home/fitnessd/public_html/bundle-package/admin/addBundle.php on line 67
+[09-Nov-2020 05:25:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/admin/addCourse.php:41) in /home/fitnessd/public_html/bundle-package/admin/addCourse.php on line 69
+[09-Nov-2020 15:41:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/admin/addCourse.php:41) in /home/fitnessd/public_html/bundle-package/admin/addCourse.php on line 69
+[09-Nov-2020 16:58:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/admin/addCourse.php:41) in /home/fitnessd/public_html/bundle-package/admin/addCourse.php on line 69
+[09-Nov-2020 16:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/fitnessd/public_html/bundle-package/admin/addCourse.php:41) in /home/fitnessd/public_html/bundle-package/admin/addCourse.php on line 69
+[12-Nov-2020 05:13:09 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[12-Nov-2020 05:14:34 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[12-Nov-2020 05:14:39 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[13-Nov-2020 13:37:44 UTC] PHP Warning:  A non-numeric value encountered in /home/fitnessd/public_html/bundle-package/common/navpage.class.php on line 101
+[13-Nov-2020 13:39:36 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[13-Nov-2020 13:39:39 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[13-Nov-2020 13:45:48 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[13-Nov-2020 14:29:09 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[13-Nov-2020 18:11:42 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fitnessd_bundle-package.netw_feedback' doesn't exist in /home/fitnessd/public_html/bundle-package/common/db.class.php:146
+Stack trace:
+#0 /home/fitnessd/public_html/bundle-package/common/db.class.php(146): PDOStatement->execute()
+#1 /home/fitnessd/public_html/bundle-package/admin/feedback.php(25): Database->getRecFrmQry('SELECT * FROM n...')
+#2 /home/fitnessd/public_html/bundle-package/admin/index.php(46): include('/home/fitnessd/...')
+#3 {main}
+  thrown in /home/fitnessd/public_html/bundle-package/common/db.class.php on line 146
+[19-Nov-2020 06:41:50 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/fitnessd/public_html/bundle-package/common/init.loader.php on line 29
+[19-Nov-2020 06:41:50 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::__construct() must be an instance of PDO, string given, called in /home2/fitnessd/public_html/bundle-package/common/init.loader.php on line 32 and defined in /home2/fitnessd/public_html/bundle-package/common/db.class.php:18
+Stack trace:
+#0 /home2/fitnessd/public_html/bundle-package/common/init.loader.php(32): Database->__construct('')
+#1 /home2/fitnessd/public_html/bundle-package/admin/index.php(2): include_once('/home2/fitnessd...')
+#2 {main}
+  thrown in /home2/fitnessd/public_html/bundle-package/common/db.class.php on line 18

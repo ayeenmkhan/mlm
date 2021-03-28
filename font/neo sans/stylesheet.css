@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-Bold.eot');
+    src: local('NeoSans Bold'), local('NeoSans-Bold'),
+        url('NeoSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-Bold.woff2') format('woff2'),
+        url('NeoSans-Bold.woff') format('woff'),
+        url('NeoSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-BlackItalic.eot');
+    src: local('NeoSans Black Italic'), local('NeoSans-BlackItalic'),
+        url('NeoSans-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-BlackItalic.woff2') format('woff2'),
+        url('NeoSans-BlackItalic.woff') format('woff'),
+        url('NeoSans-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-MediumItalic.eot');
+    src: local('NeoSans Medium Italic'), local('NeoSans-MediumItalic'),
+        url('NeoSans-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-MediumItalic.woff2') format('woff2'),
+        url('NeoSans-MediumItalic.woff') format('woff'),
+        url('NeoSans-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-Light.eot');
+    src: local('NeoSans Light'), local('NeoSans-Light'),
+        url('NeoSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-Light.woff2') format('woff2'),
+        url('NeoSans-Light.woff') format('woff'),
+        url('NeoSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-Black.eot');
+    src: local('NeoSans Black'), local('NeoSans-Black'),
+        url('NeoSans-Black.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-Black.woff2') format('woff2'),
+        url('NeoSans-Black.woff') format('woff'),
+        url('NeoSans-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-LightItalic.eot');
+    src: local('NeoSans Light Italic'), local('NeoSans-LightItalic'),
+        url('NeoSans-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-LightItalic.woff2') format('woff2'),
+        url('NeoSans-LightItalic.woff') format('woff'),
+        url('NeoSans-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-Medium.eot');
+    src: local('NeoSans Medium'), local('NeoSans-Medium'),
+        url('NeoSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-Medium.woff2') format('woff2'),
+        url('NeoSans-Medium.woff') format('woff'),
+        url('NeoSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-Italic.eot');
+    src: local('NeoSans Italic'), local('NeoSans-Italic'),
+        url('NeoSans-Italic.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-Italic.woff2') format('woff2'),
+        url('NeoSans-Italic.woff') format('woff'),
+        url('NeoSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans-BoldItalic.eot');
+    src: local('NeoSans Bold Italic'), local('NeoSans-BoldItalic'),
+        url('NeoSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans-BoldItalic.woff2') format('woff2'),
+        url('NeoSans-BoldItalic.woff') format('woff'),
+        url('NeoSans-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NeoSans';
+    src: url('NeoSans.eot');
+    src: local('NeoSans'),
+        url('NeoSans.eot?#iefix') format('embedded-opentype'),
+        url('NeoSans.woff2') format('woff2'),
+        url('NeoSans.woff') format('woff'),
+        url('NeoSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

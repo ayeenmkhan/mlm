@@ -1,0 +1,75 @@
+.genchart {
+    height: 640px;
+    width: 100%;
+    margin: 5px auto;
+    border: 1px solid #EEE;
+    border-radius: 3px;
+}
+
+.Treant > .node {
+
+}
+
+.Treant > p {
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.node-name {
+    font-weight: bold;
+}
+
+.nodeStyle {
+    padding: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #fafafa;
+    border: 2px solid #78828A;
+    width: 128px;
+    font-family: Arial;
+    font-size: 12px;
+
+    -moz-box-shadow: 1px 2px 4px rgba(103, 119, 239, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(103, 119, 239, 0.5);
+    box-shadow: 1px 2px 4px rgba(103, 119, 239, 0.5);
+}
+.nodeStyle:hover {
+    color: #E17055;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nodeStyle img {
+    width: 36px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-left: 40px;
+    background-color: #fafafa;
+    border: 1px solid #78828A !important;
+}
+
+.node-name, .node-title, .node-desc, .node-contact {
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 3px;
+    text-decoration: none;
+}
+
+.ismbr0 {
+    background-color: #E2FCEB;
+}
+
+.ismbr1 {
+    background-color: #E2E6FC;
+}
+
+.ismbr2 {
+    background-color: #FCF8E2;
+}
+
+.ismbr3 {
+    background-color: #FCE2E6;
+}

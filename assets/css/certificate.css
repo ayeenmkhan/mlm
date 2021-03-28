@@ -1,0 +1,83 @@
+hr {
+  background-color: #be2d24;
+  height: 3px;
+  margin: 5px;
+}
+
+div#cert-footer {
+  position: absolute;
+  width: 60%;
+  top: 550px;
+  text-align: center;
+}
+
+#cert-stamp, #cert-ceo-sign {
+  width: 60%;
+  display: inline-block;
+}
+
+div#cert-issued-by, div#cert-ceo-design {
+  width: 40%;
+  display: inline-block;
+  float: left;
+}
+
+div#cert-ceo-design {
+  margin-left: 10%;
+}
+
+h1 {
+  font-family: 'Saira Condensed', sans-serif;
+  margin: 5px 0px;
+}
+
+
+p {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  margin: 5px 0px;
+}
+
+
+h1#cert-holder {
+  font-size: 50px;
+  color: #1975CF;
+  text-align: center;
+}
+
+p.smaller {
+  font-size: 17px !important;
+}
+
+div#cert-desc {
+  width: 70%;
+}
+
+p#cert-from {
+  color: #1975CF;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+div#cert-verify {
+  opacity: 1;
+  position: absolute;
+  top: 680px;
+  left: 60%;
+  font-size: 12px;
+  color: grey;
+
+}
+#cert-course{
+    text-align: center;;
+}
+.certrow{
+    border: 10px solid #1975CF;
+    border-radius: 20px;
+    height: 462px;
+}
+.upper{
+
+    position: relative;
+    margin-top: 55px;
+
+}

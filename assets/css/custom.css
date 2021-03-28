@@ -1,0 +1,44 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ * 
+ */
+
+/*# sourceMappingURL=custom.css.map */
+
+textarea.rowsize-sm {
+    height: 80px !important;
+}
+textarea.rowsize-md {
+    height: 128px !important;
+}
+textarea.rowsize-lg {
+    height: 256px !important;
+}
+
+.select2 {
+    width:100% !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 0.9em;
+    font-family: "Segoe UI", "Georgia", "Helvetica", Arial;
+    color: #bebebe !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size: 0.9em;
+    font-family: "Segoe UI", "Georgia", "Helvetica", Arial;
+    color: #bebebe !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-size: 0.9em;
+    font-family: "Segoe UI", "Georgia", "Helvetica", Arial;
+    color: #bebebe !important;
+}
+
+.tooltip-inner {
+    max-width: 320px !important;
+}
