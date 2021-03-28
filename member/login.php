@@ -198,18 +198,18 @@ include('../common/pub.header.php');
             <span class="hamburger-icon-small-line"></span>
         </button>
         <a class="navbar-brand" href="https://immortalsuccess.com/" id="header-logo">
-            <img id="header-logo-image" src="../assets/image/header_logo.png" alt="immortalsuccess.com" style="max-height:30px">
+            <img id="header-logo-image" src="../assets/image/logo_defaultimage.png" alt="#" style="max-height:30px">
         </a>
     </div>
     <nav class="">
         <div class="mobile-icon">
             <span onclick="document.querySelector('nav').style.transform='translateX(-100%)';">&times;</span>
             <a class="navbar-brand" href="https://immortalsuccess.com/">
-                <img id="header-logo-image" src="../assets/image/header_logo for mobile menu.png" alt="immortalsuccess.com">
+                <img id="header-logo-image" src="../assets/image/logo_defaultimage.png for mobile menu.png" alt="">
             </a>
         </div>
-        <a class="" href="../about/index.html">About Us</a>
-        <a class="" href="../contact/index.html">Contact Us</a>
+        <a class="" href="#">About Us</a>
+        <a class="" href="#">Contact Us</a>
         <a class="btn btn-danger" href="register.php">Sign up</a>
     </nav>
 </header>
