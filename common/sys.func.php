@@ -832,7 +832,7 @@ function iscontentmbr($options, $mbrstr) {
 
 function dotrxwallet($limit = 25) {
     global $db, $cfgrow, $bpprow;
-
+    
     $ListData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_transactions WHERE 1 AND txfromid = '0' AND txtoid > '0' AND txstatus = '0' AND txtoken NOT LIKE '%|WIDR:%' LIMIT {$limit}");
     if (count($ListData) > 0) {
         $numcount = $ewallet = 0;

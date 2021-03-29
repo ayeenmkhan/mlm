@@ -762,7 +762,7 @@ function regmbrplans($mbrstr = array(), $refmpid = 0, $ppid = 1,$package="",$pac
             'reg_ip' => $reg_ip,
             // 'reg_fee' => $bpprow['regfee'],
             'reg_fee' => $regPackege,
-            'package' => $package,
+            'package' => $package_type,
             'mpstatus' => $mpstatus,
             'hostspr' => $hostspr,
             'idref' => $idref,
@@ -771,6 +771,8 @@ function regmbrplans($mbrstr = array(), $refmpid = 0, $ppid = 1,$package="",$pac
             'mpwidth' => $bpprow['maxwidth'],
             'mpdepth' => $bpprow['maxdepth'],
         );
+
+        // echo "<pre>";print_r($data);exit;
         $insert = $db->insert(DB_TBLPREFIX . '_mbrplans', $data);
         $newmbrplanid = $db->lastInsertId();
         $resultarr['mpid'] = $newmbrplanid;

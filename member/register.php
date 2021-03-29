@@ -101,8 +101,13 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
                     // if ($cfgtoken['isautoregplan'] == 1) {
                     // register to membership
+                    if($unref!=''){
+                        $refrer_username=$unref;
+                    }else{
+                        $refrer_username=$username;
+                    }
                     $mbrstr = getmbrinfo($newmbrid);
-                    $refstr = getmbrinfo($unref, 'username');
+                    $refstr = getmbrinfo($refrer_username, 'username');
                     regmbrplans($mbrstr, $refstr['mpid'], $bpprow['ppid']);
                     // }
 
@@ -333,20 +338,7 @@ $_SESSION['show_msg'] = '';
                                             <label>Did you have any refer code <span class="text-danger">*</span></label>
                                             <label for="yes"><input type="radio" name="refer" value="yes" onclick="document.querySelector('#referSection').style.display='flex'">&nbsp;&nbsp;Yes</label>
                                             <label for="no"><input type="radio" name="refer" value="no" onclick="document.querySelector('#referSection').style.display='none'">&nbsp;&nbsp;No</label>
-                                            <!-- <input type="radio" name="unref" id="unref" class="form-control" value="<?php echo $sesref['username']; ?>" placeholder="Enter referrer username" onBlur="checkRefreeMember('un2i', this.value, '')" required>
-                                            <input type="text" name="unref" id="unref" class="form-control" value="<?php echo $sesref['username']; ?>" placeholder="Enter referrer username" onBlur="checkRefreeMember('un2i', this.value, '')" required> -->
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Package Plan <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="package" id="package" onchange="selectPackageType(this.value)" required>
-                                                   <option value="">Select</option>
-                                                   <option value="1000.00">1,000</option>
-                                                   <option value="5000.00">5,000</option>
-                                                   <option value="10000.00">10,000</option>
-                                                   <option value="20000.00">20,000</option>
-                                                </select>
-                                     <input type="hidden" name="package_type" id="package_type" value="">
-                                        </div>
+                                                                              </div>
                                     </div>
                                 <?php endif; ?>
                                 <div class="row" id="referSection" <?php if (!$sesref['username']) {
@@ -364,8 +356,21 @@ $_SESSION['show_msg'] = '';
                                         <label>Referrer Name</label>
                                         <div id="resultRefree">?</div>
                                     </div>
+
+                                       
                                 </div>
                                 <div class="row">
+                                    <div class="form-group col-md-4">
+                                            <label>Package Plan <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="package" id="package" onchange="selectPackageType(this.value)">
+                                                   <option value="">Select</option>
+                                                   <option value="1000.00">1,000</option>
+                                                   <option value="5000.00">5,000</option>
+                                                   <option value="10000.00">10,000</option>
+                                                   <option value="20000.00">20,000</option>
+                                                </select>
+                                     <input type="hidden" name="package_type" id="package_type" value="">
+                                        </div>
                                     <div class="form-group col-md-4">
                                         <label for="firstname"><?php echo myvalidate($LANG['g_firstname']); ?> <span class="text-danger">*</span></label>
                                         <input id="firstname" type="text" class="form-control" name="firstname" value="<?php echo myvalidate($_SESSION['firstname']); ?>" autofocus required>
@@ -387,9 +392,7 @@ $_SESSION['show_msg'] = '';
                                             Please fill in your valid email address
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
+                              
                                     <div class="form-group col-md-4">
                                         <label for="username">Username <span id="resultGetMbr" class="text-danger">*</span></label>
                                         <input id="username" type="text" class="form-control" name="username" value="<?php echo myvalidate($_SESSION['username']); ?>" onBlur="checkMember('unex', this.value, '')" required>

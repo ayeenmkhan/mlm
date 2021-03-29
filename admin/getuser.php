@@ -39,6 +39,7 @@ if (isset($FORM['getId']) and $FORM['getId'] != "") {
 
     $statusactstr = '';
     if ($rowstr['mpid'] < 1) {
+        // echo "<pre>";print_r($rowstr['mpid']);
         $markstatus = "<span class='alert alert-dark'>UNREGISTERED</span>";
     } else {
         if ($rowstr['mpstatus'] == 1) {
