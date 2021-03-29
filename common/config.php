@@ -15,9 +15,9 @@ date_default_timezone_set('UTC');
 
 //Localserver
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '123');
-define('DB_NAME', 'mlm_project');
+define('DB_USER', 'sachk6ni');
+define('DB_PASSWORD', 'Icchatva@7623!');
+define('DB_NAME', 'sachk6ni_mlm_project');
 define('DB_TBLPREFIX', 'netw');
 
 // define('INSTALL_PATH', 'C:\localhost');
