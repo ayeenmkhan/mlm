@@ -57,12 +57,12 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         $redirval = "?res=exist";
     } else {
 
-        if (!dumbtoken($dumbtoken)) {
-            $_SESSION['show_msg'] = showalert('danger', 'Error!', $LANG['g_invalidtoken']);
-            $redirval = "?res=errtoken";
-            redirpageto($redirval);
-            exit;
-        }
+        // if (!dumbtoken($dumbtoken)) {
+        //     $_SESSION['show_msg'] = showalert('danger', 'Error!', $LANG['g_invalidtoken']);
+        //     $redirval = "?res=errtoken";
+        //     redirpageto($redirval);
+        //     exit;
+        // }
 
         $in_date = date('Y-m-d H:i:s', time() + (3600 * $cfgrow['time_offset']));
 
