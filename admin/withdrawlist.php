@@ -169,7 +169,10 @@ $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_transactions W
 
                         switch ($val['txstatus']) {
                             case "1":
-                                $badgestatus = "<span class='badge badge-secondary'><i class='fa fa-fw fa-check'></i> Processing</span>";
+                                $badgestatus = "<span class='badge badge-secondary'><i class='fa fa-fw fa-spinner'></i> Processing</span>";
+                                break;
+                            case "3":
+                                $badgestatus = "<span class='badge badge-success'><i class='fa fa-fw fa-check'></i> Completed</span>";
                                 break;
                             case "2":
                                 $badgestatus = "<span class='badge badge-info'><i class='fa fa-fw fa-user'></i> Verified</span>";

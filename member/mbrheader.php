@@ -25,6 +25,23 @@ $mbrimgfile = ($mbrstr['mbr_image']) ? $mbrstr['mbr_image'] : $cfgrow['mbr_defau
 $paymentStatus= getuserPaymentStatusID($mbrstr['id']);
 $paystaus= $paymentStatus[0]['mpstatus'];
 
+// echo "<pre>";print_r($mbrstr);exit;
+if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'5000.00'){
+
+    $LEVEL= '<span class="badge badge-secondary">LEVEL ONE</span>';
+}
+if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'10000.00'){
+
+    $LEVEL= '<span class="badge badge-warning">LEVEL TWO</span>';
+}
+if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'20000.00'){
+
+    $LEVEL= '<span class="badge badge-info">LEVEL THREE</span>';
+}
+if($mbrstr['ewallet']>='20000.00'){
+
+    $LEVEL= '<span class="badge badge-primary">LEVEL FOUR</span>';
+}
 // if($paystaus==1){
 //     $coursesmenu=  <<<INI_HTML
 //                          <li{$menuactive['digiload']}><a class="nav-link" href="index.php?hal=digiload"><i class="fas fa-book"></i> <span>{$LANG['m_digiload']}</span></a></li>
@@ -103,12 +120,13 @@ $member_content = <<<INI_HTML
                             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
                         </ul>
                     </div>
+
                     {$tplstr['demo_mode_warn']}{$tplstr['debug_mode_warn']}
                     <ul class="navbar-nav navbar-right">
                         <li class="dropdown dropdown-list-toggle">
                             <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
                                 <div class="d-sm-none badge badge-light"><span class="text-uppercase">{$LANG['lang_iso']}</span></div>
-                                <div class="d-none d-sm-block badge badge-light">{$translation_str}</div>
+                                {$LEVEL}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-title">Language</div>
