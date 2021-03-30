@@ -127,7 +127,8 @@ $admin_content = <<<INI_HTML
 
                             <li class="menu-header">Utility</li>
                             <li{$menuactive['getstart']}><a class="nav-link" href="index.php?hal=getstart"><i class="fas fa-flag-checkered"></i> <span>{$LANG['a_getstart']}</span></a></li>
-                            <li{$menuactive['digicontent']}><a class="nav-link" href="index.php?hal=digicontent"><i class="fas fa-window-restore"></i><span>{$LANG['a_digicontent']}</span></a></li>
+                           <!-- <li{$menuactive['digicontent']}><a class="nav-link" href="index.php?hal=digicontent"><i class="fas 
+fa-window-restore"></i><span>{$LANG['a_digicontent']}</span></a></li> -->
                             <li{$menuactive['termscon']}><a class="nav-link" href="index.php?hal=termscon"><i class="fas fa-exclamation-circle"></i> <span>{$LANG['a_termscon']}</span></a></li>
                             <li{$menuactive['termskyc']}><a class="nav-link" href="index.php?hal=termskyc"><i class="fas fa-exclamation-circle"></i> <span>{$LANG['a_termskyc']}</span></a></li>
 
