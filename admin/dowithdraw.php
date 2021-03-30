@@ -58,7 +58,7 @@ if (isset($editId) and $editId != "") {
 
     $txpaytype_menu = select_opt($avalwithdrawgatearr, $rowstr['txpaytype']);
 
-    $txstatusarr = array(0, 1, 2);
+    $txstatusarr = array(0, 1, 2, 3);
     $txstatus_cek = radiobox_opt($txstatusarr, $rowstr['txstatus']);
 
     $payto = getusernameid($rowstr['txfromid'], 'username');
@@ -197,7 +197,11 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                         </label>
                         <label class="selectgroup-item">
                             <input type="radio" name="txstatus" value="1" class="selectgroup-input"<?php echo myvalidate($txstatus_cek[1]); ?>>
-                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-check-circle"></i> Processing</span>
+                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-spinner"></i> Processing</span>
+                        </label> 
+                         <label class="selectgroup-item">
+                            <input type="radio" name="txstatus" value="3" class="selectgroup-input"<?php echo myvalidate($txstatus_cek[3]); ?>>
+                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-check-circle"></i> Completed</span>
                         </label>
                     </div>
                 </div>

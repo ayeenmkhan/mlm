@@ -262,12 +262,9 @@ $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs LEFT JOIN
                         <tr>
 
                             <td scope="row"><?php echo myvalidate($s); ?></td>
-                            <td scope="row"><?php if($val['level_bage']=='Silver'){?><span class="badge badge-secondary">Silver</span><?php }else if($val['level_bage']=='Gold'){?> <span class="badge badge-warning">Gold</span> <?php }
-                            else if($val['level_bage']=='Platinium'){?> <span class="badge badge-info">Platinium</span> <?php }
-                                else if($val['level_bage']=='Diamond'){?><span class="badge badge-primary">Diamond</span><?php }
-                                else if($val['level_bage']=='Master'){?><span class="badge badge-dark">Master</span><?php }
-                                else if($val['level_bage']=='Bronze'){?><span class="badge badge-dark" style="background-color: #ff8400;">Bronze</span><?php }
-                                    else{?> <span class="badge badge-danger">Runner</span><?php }?></td>
+                            <td scope="row"><?php if($val['ewallet']>='1000.00' && $val['ewallet']<'5000.00'){?><span class="badge badge-secondary">LEVEL ONE</span><?php }else if($val['ewallet']>='5000.00' && $val['ewallet']<'10000.00'){?> <span class="badge badge-warning">LEVEL TWO</span> <?php }
+                            else if($val['ewallet']>='10000.00' && $val['ewallet']<'20000.00'){?> <span class="badge badge-info">LEVEL THREE</span> <?php }
+                                else if($val['ewallet']>='20000.00'){?><span class="badge badge-primary">LEVEL FOUR</span><?php }?></td>
                             <td data-toggle="tooltip" title="<?php echo myvalidate($val['in_date']); ?>" nowrap><?php echo formatdate($val['in_date']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['firstname']) . ' ' . myvalidate($val['lastname']); ?>'><?php echo myvalidate($val['username']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['email']); ?>'><?php echo myvalidate($stremail); ?></td>

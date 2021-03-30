@@ -2,7 +2,30 @@
 if (!defined('OK_LOADME')) {
     die('o o p s !');
 }
+if (isset($FORM['canel_req']) and $FORM['canel_req'] == '1') {
+    extract($FORM);
+        $redirto = $_SESSION['redirto'];
+        $_SESSION['redirto'] = '';
 
+        // deduct wallet
+        $ewallet = $mbrstr['ewallet'] + $req_amount;
+        $data = array(
+            'ewallet' => $ewallet,
+        );
+        $update = $db->update(DB_TBLPREFIX . '_mbrs', $data, array('id' => $user_id));
+
+    $delete=$db->delete(DB_TBLPREFIX . '_transactions', array('txid' => $tansaction_id,'txstatus' => 0));
+    
+    
+      if ($delete) {
+            $_SESSION['dotoaster'] = "toastr.success('Withdrawal request have been Cancelled successfully!', 'Success');";
+        } else {
+        $_SESSION['dotoaster'] = "toastr.error('Withdrawal cancel request failed <strong>Please try again!</strong>', 'Warning');";
+        }
+    redirpageto('index.php?hal=withdrawreq');
+    exit;
+
+}
 if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
     extract($FORM);
@@ -103,7 +126,7 @@ $myreftotal = $row[0]['totref'];
 
                     <div class="col-md-12 float-md-right">
                         <blockquote>
-                            <p><strong>Pending</strong>: The request has been sent but is not yet processed. <strong>Verified</strong>: The request has passed verification. <strong>Processing</strong>: The request is being processed. Once processed, the funds will be sent to your account.</p>
+                            <p><strong>Pending</strong>: The request has been sent but is not yet processed. <strong>Verified</strong>: The request has passed verification. <strong>Processing</strong>: The request is being processed.</p><strong>Completed</strong>: The request is being processed. Once processed, the funds will be sent to your account.</p>
                         </blockquote>
                     </div>
                     <div class="col-md-6">
@@ -151,7 +174,7 @@ $myreftotal = $row[0]['totref'];
                     <?php }else {?>
                             <div class="col-md-12 float-md-right">
                         <blockquote>
-                            <p style="color: red;"><strong>Note</strong>: You can send withdrawl request only when you add minumum of two member into our platform by using your referal code .</p>
+                            <p style="color: red;"><strong>Note</strong>: You can send withdrawl request! Only when you add minumum of two member into our platform by using your referal code .</p>
                         </blockquote>
                     </div>
                     <?php }?>
@@ -191,6 +214,9 @@ $myreftotal = $row[0]['totref'];
                         break;
                     case "2":
                         $statusbadge .= "<span class='badge badge-info'>Verified</span>";
+                        break; 
+                    case "3":
+                        $statusbadge .= "<span class='badge badge-success'>Completed</span>";
                         break;
                     default:
                         $statusbadge .= "<span class='badge badge-light'>Pending</span>";
@@ -198,6 +224,7 @@ $myreftotal = $row[0]['totref'];
                 ?>
 
                 <div class="col-12 col-md-4 col-lg-4">
+                    <form action="" method="post">
                     <div class="pricing">
                         <div class="pricing-title <?php echo myvalidate($headdtbg); ?>">
                             <?php echo formatdate($val['txdatetm'], 'dt'); ?>
@@ -208,8 +235,14 @@ $myreftotal = $row[0]['totref'];
                                 <div><?php echo myvalidate($paybyoptstr); ?></div>
                             </div>
                             <?php echo myvalidate($statusbadge); ?>
+                            <input type="hidden" name="user_id" value="<?php echo $mbrstr['id'];?>">
+                            <input type="hidden" name="req_amount" value="<?php echo $val['txamount'];?>">
+                            <input type="hidden" name="tansaction_id" value="<?php echo $val['txid'];?>">
+                            <input type="hidden" name="canel_req" value="1">
+                            <?php if($val['txstatus']==0){?><button type="submit" onclick="return check();" class="btn btn-danger" style="border-radius: 30px;height: 30px;">Cancel</button><?php }?>
                         </div>
                     </div>
+                    </form>
                 </div>
 
                 <?php
@@ -223,4 +256,14 @@ $myreftotal = $row[0]['totref'];
     </div>
 
 </div>
+
+<script type="text/javascript">
+    function check() {
+        if(confirm('Are you sure want to cancel the withdrawl request?')){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
 
