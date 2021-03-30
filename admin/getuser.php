@@ -167,13 +167,13 @@ INI_HTML;
             </div>
 
             <article class="article mt-4">
-                <div class="article-header">
+              <!--   <div class="article-header">
                     <div class="article-image" data-background="<?php echo myvalidate($planlogo); ?>">
                     </div>
                     <div class="article-title">
                         <h2 class="badge badge-primary"><?php echo ($bpprow['ppname']) ? myvalidate($bpprow['ppname']) : $cfgrow['site_name']; ?> - <?php echo ($bpprow['regfee'] > 0) ? myvalidate($bpprow['currencysym'] . $bpprow['regfee'] . ' ' . $bpprow['currencycode']) : 'FREE'; ?></h2>
                     </div>
-                </div>
+                </div> -->
                 <div class="article-details">
                     <div><?php echo ($bpprow['planinfo']) ? myvalidate($bpprow['planinfo']) : '-'; ?></div>
                     <div class='article-cta mt-4'>
