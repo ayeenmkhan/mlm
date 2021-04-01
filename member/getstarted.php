@@ -149,9 +149,9 @@ $getstartstr = base64_decode($cfgrow['getstart']);
 
 
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-6 pt-2 text-center">
                     <input type="hidden" name="" id="counter" value="<?php echo $mbrstr['counter'] ?>">
-                      <h1><?php echo $mbrstr['counter'] ? $mbrstr['counter'] : '0'?>/20</h1>
+                      <h4><?php echo $mbrstr['counter'] ? $mbrstr['counter'] : '0'?>/20</h4>
                   </div>
 
                 </div>
@@ -161,7 +161,7 @@ $getstartstr = base64_decode($cfgrow['getstart']);
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+<div class="modal fade pt-5" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
