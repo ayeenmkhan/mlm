@@ -40,7 +40,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     extract($FORM);
           // if new email exist, check aadhar card and pan card 
 
-    $condition = ' AND email LIKE "' . $FORM['email'] . '" AND adhar_card !="" AND pan_card !="" LIMIT 1';
+    $condition = ' AND adhar_card LIKE "' . $FORM['adhar_card'] . '" LIMIT 1';
     // echo $myquery = "SELECT * FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition . "";
     $Checksql = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition . "");
     // var_dump($Checksql[0]['adhar_card']);exit;
@@ -48,14 +48,9 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     $checkPanCard='';
     if($Checksql[0]['adhar_card']==null){
         $checkAdhar= 'null';
-    }else if($Checksql[0]['adhar_card']!=$adhar_card){
-        $checkAdhar= 'not_match';
+    }else if($Checksql[0]['adhar_card']==$adhar_card){
+        $checkAdhar= 'match';
     } 
-    if($Checksql[0]['pan_card']==null){
-        $checkPanCard= 'null';
-    }else if($Checksql[0]['pan_card']!=$adhar_card){
-        $checkPanCard= 'not_match';
-    }
     
 
     $mbr_sosmed = put_optionvals($mbr_sosmed, 'mbr_twitter', mystriptag($mbr_twitter));
@@ -72,11 +67,13 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         exit;
     }
 
-    if ($checkAdhar!='null' || $checkPanCard!='null') {
+    if ($checkAdhar!='null' || $checkAdhar=='match') {
         // do nothing
-        $_SESSION['dotoaster'] = "toastr.warning('Aadhar/Pan Card not matched with <strong>Existed Account with same Email ID!</strong>', 'Warning');";
+        $_SESSION['dotoaster'] = "toastr.warning('<strong>Existed Account with same Adhar Card!</strong>', 'Warning');";
+         redirpageto('index.php?hal=' . $hal);
+        exit;
     }else{
-            if ($mbrstr['mbrstatus'] > 1) {
+        if ($mbrstr['mbrstatus'] > 1) {
         $_SESSION['dotoaster'] = "toastr.error('You did not change anything!', 'Account limited');";
         redirpageto('index.php?hal=' . $hal);
         exit;
