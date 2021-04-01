@@ -25,15 +25,15 @@ $paystaus= $paymentStatus[0]['mpstatus'];
 // echo "<pre>";print_r($mbrstr);exit;
 if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'5000.00'){
 
-    $LEVEL= '<span class="badge badge-secondary">LEVEL ONE</span>';
+    $LEVEL= '<span class="badge badge-secondary font-weight-bold">Level One</span>';
 }
 if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'10000.00'){
 
-    $LEVEL= '<span class="badge badge-warning">LEVEL TWO</span>';
+    $LEVEL= '<span class="badge badge-warning font-weight-bold">Level Two</span>';
 }
 if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'20000.00'){
 
-    $LEVEL= '<span class="badge badge-info">LEVEL THREE</span>';
+    $LEVEL= '<span class="badge badge-info font-weight-bold">Level Three</span>';
 }
 if($mbrstr['ewallet']>='20000.00'){
 
@@ -121,14 +121,10 @@ $member_content = <<<INI_HTML
                     {$tplstr['demo_mode_warn']}{$tplstr['debug_mode_warn']}
                     <ul class="navbar-nav navbar-right">
                         <li class="dropdown dropdown-list-toggle">
-                            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
+                            <a href="#" class="nav-link notification-toggle nav-link-lg">
                                 <div class="d-sm-none badge badge-light"><span class="text-uppercase">{$LANG['lang_iso']}</span></div>
                                 {$LEVEL}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-title">Language</div>
-                                {$langliststr}
-                            </div>
                         </li>
                         
                         <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -158,7 +154,8 @@ $member_content = <<<INI_HTML
                         <ul class="sidebar-menu">
                             <li class="menu-header">Main</li>
                             <li{$menuactive['dashboard']}><a class="nav-link" href="index.php?hal=dashboard"><i class="fas fa-chart-line"></i><span>{$LANG['g_dashboard']}</span></a></li>
-                            <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-flag-checkered"></i><span>Earn Bonuses</span></a></li>
+                            <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-funnel-dollar"></i><span>Earn 
+Bonuses</span></a></li>
                            
                             {$coursesmenu}
                             {$mbractive_menu}                         
