@@ -262,9 +262,11 @@ $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs LEFT JOIN
                         <tr>
 
                             <td scope="row"><?php echo myvalidate($s); ?></td>
-                            <td scope="row"><?php if($val['ewallet']>='1000.00' && $val['ewallet']<'5000.00'){?><span class="badge badge-secondary">LEVEL ONE</span><?php }else if($val['ewallet']>='5000.00' && $val['ewallet']<'10000.00'){?> <span class="badge badge-warning">LEVEL TWO</span> <?php }
-                            else if($val['ewallet']>='10000.00' && $val['ewallet']<'20000.00'){?> <span class="badge badge-info">LEVEL THREE</span> <?php }
-                                else if($val['ewallet']>='20000.00'){?><span class="badge badge-primary">LEVEL FOUR</span><?php }?></td>
+                            <td scope="row"><?php if($val['ewallet']>='1000.00' && $val['ewallet']<'5000.00'){?><span class="badge badge-secondary 
+font-weight-bold">Level One</span><?php }else if($val['ewallet']>='5000.00' && $val['ewallet']<'10000.00'){?> <span class="badge badge-warning 
+font-weight-bold">Level Two</span> <?php 
+}else if($val['ewallet']>='10000.00' && $val['ewallet']<'20000.00'){?> <span class="badge badge-info font-weight-bold">Level Three</span> <?php }
+                                else if($val['ewallet']>='20000.00'){?><span class="badge badge-primary font-weight-bold">Level Four</span><?php }?></td>
                             <td data-toggle="tooltip" title="<?php echo myvalidate($val['in_date']); ?>" nowrap><?php echo formatdate($val['in_date']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['firstname']) . ' ' . myvalidate($val['lastname']); ?>'><?php echo myvalidate($val['username']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['email']); ?>'><?php echo myvalidate($stremail); ?></td>
