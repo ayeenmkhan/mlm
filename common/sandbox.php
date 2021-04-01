@@ -68,6 +68,8 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
             'txppid' => $mbrstr['mppid'],
             'txtoken' => "|RENEW:{$mbrstr['mpid']}|, |PREVEXP:{$reg_expd}|",
         );
+
+        // echo "<pre>";print_r($data);exit();
         $insert = $db->insert(DB_TBLPREFIX . '_transactions', $data);
         $newtrxid = $db->lastInsertId();
 
@@ -91,7 +93,7 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
         $mptoken = put_optionvals($mptoken, 'istrial', '0');
     }
 
-    // echo '<pre>';print_r($txamount);exit();
+    echo '<pre>';print_r($txamount);
     if ($txamount <= $txamount || $skipamount == 1) {
         // member
         $data = array(
@@ -114,6 +116,7 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
             'txstatus' => 1,
             'txadminfo' => $txadminfo,
         );
+          // echo '<pre>';print_r($data);
         $update = $db->update(DB_TBLPREFIX . '_transactions', $data, array('txid' => $trxstr['txid']));
 
         // process commission
@@ -125,6 +128,7 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
             addcmlist('Referrer Commission', 'PREF', $getcmlist, $mbrstr);
 
             // level commission list
+               // echo '<pre>';print_r($bpprow['cmlist']);exit();
             if($package=='1'){
                 $commission_percentage= $bpprow['cmlist'];
             }if($package=='2'){

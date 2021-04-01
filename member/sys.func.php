@@ -304,6 +304,16 @@ function getCoursesModuleByID($course_id){
 $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_courses WHERE bundle_id='".$course_id."'");
     return $userData;
 }
+function updateBonusCounter($counter,$wallet,$user_id){
+    global $db, $cfgrow;
+
+    $data = array(
+        'counter' => $counter,
+        'ewallet'=> $wallet
+    );
+$userData = $db->update(DB_TBLPREFIX . '_mbrs', $data, array('id' => $user_id));
+    return $userData;
+}
 // function to get ip address
 function get_userip() {
     $ip = false;

@@ -4,9 +4,6 @@ if (!defined('OK_LOADME')) {
     die('o o p s !');
 }
 
-if ($cfgtoken['isgetstart'] != 1) {
-    $menuactive['getstarted'] = " style='display: none;'";
-}
 if ($bpprow['maxwidth'] == 0) {
     $menuactive['genealogyview'] = " style='display:none;'";
     if ($FORM['hal'] == 'genealogyview') {
@@ -161,7 +158,7 @@ $member_content = <<<INI_HTML
                         <ul class="sidebar-menu">
                             <li class="menu-header">Main</li>
                             <li{$menuactive['dashboard']}><a class="nav-link" href="index.php?hal=dashboard"><i class="fas fa-chart-line"></i><span>{$LANG['g_dashboard']}</span></a></li>
-                            <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-flag-checkered"></i><span>{$LANG['m_getstarted']}</span></a></li>
+                            <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-flag-checkered"></i><span>Earn Bonuses</span></a></li>
                            
                             {$coursesmenu}
                             {$mbractive_menu}                         

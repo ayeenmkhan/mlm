@@ -30,6 +30,12 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
     extract($FORM);
     /*Check wallet amount minimum of 1000 INR should have to remain in account*/
+    if($txamount<'200'){
+          $_SESSION['dotoaster'] = "toastr.error('Withdrawal request failed <strong>Minimum of 200 INR Could be withdrawn!</strong>', 'Warning');";
+
+            redirpageto('index.php?hal=withdrawreq');
+            exit;
+    }
     if($mbrstr['ewallet'] > '1000.00'){
 
     if ( $txamount > 0 && $txamount <= $mbrstr['ewallet']) {
@@ -157,7 +163,7 @@ $myreftotal = $row[0]['totref'];
                                 </select>
                             </div>
                         </div> -->
-                        <?php if($myreftotal>='2'){?>
+                        <?php if($myreftotal>='2' && $mbrstr['adhar_card']!='' ){?>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -174,7 +180,7 @@ $myreftotal = $row[0]['totref'];
                     <?php }else {?>
                             <div class="col-md-12 float-md-right">
                         <blockquote>
-                            <p style="color: red;"><strong>Note</strong>: You can send withdrawl request! Only when you add minumum of two member into our platform by using your referal code .</p>
+                            <p style="color: red;"><strong>Note</strong>: You can send withdrawl request! Only when you add minumum of two member into our platform by using your referal code and add Adhar-Card using KYC form first.</p>
                         </blockquote>
                     </div>
                     <?php }?>

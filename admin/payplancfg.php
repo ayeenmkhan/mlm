@@ -253,10 +253,10 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                             </div>
 
                             <div class="tab-pane fade" id="bpptab3" role="tabpanel" aria-labelledby="config-tab3">
-                                <div class="form-group">
+                            <!--     <div class="form-group">
                                     <label for="cmdrlist">Personal Referral Commission</label>
                                     <input type="text" name="cmdrlist" id="cmdrlist" class="form-control" value="<?php echo isset($bpprow['cmdrlist']) ? $bpprow['cmdrlist'] : ''; ?>" placeholder="Personal referral commission">
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="cmlist">Package One Commission</label>
@@ -275,14 +275,14 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                                     <textarea class="form-control rowsize-sm" name="cmlist_four" id="cmlist_four" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_four']) ? $bpprow['cmlist_four'] : ''; ?></textarea>
                                 </div>
 
-                                <div class="form-group">
+                            <!--     <div class="form-group">
                                     <label for="rwlist">Level Complete Reward</label>
                                     <textarea class="form-control rowsize-sm" name="rwlist" id="rwlist" placeholder="Reward value, separated with comma"><?php echo isset($bpprow['rwlist']) ? $bpprow['rwlist'] : ''; ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="rwlist">Level Complete Bages</label>
                                     <textarea class="form-control rowsize-sm" name="level_bages" id="level_bages" placeholder="Bages name, separated with comma"><?php echo isset($bpprow['level_bages']) ? $bpprow['level_bages'] : ''; ?></textarea>
-                                </div>
+                                </div> -->
 
                             </div>
 
