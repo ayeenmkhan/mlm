@@ -203,7 +203,7 @@ $getstartstr = base64_decode($cfgrow['getstart']);
       keyboard: false, //remove option to close with keyboard
       show: true //Display loader!
     });
-    var testUrl = "<?php echo SURL;?>/member/bonuspay.php";
+    var testUrl = "<?php echo HOST;?>/member/bonuspay.php";
     var user_id= '<?php echo $mbrstr['id'];?>';
     var counter= '<?php echo $mbrstr['counter']+1;?>';
     var package= '<?php echo $mbrstr['package'];?>';
