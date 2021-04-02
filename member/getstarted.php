@@ -228,7 +228,7 @@ setTimeout(
           console.log(response);
           
           $("#loadMe").modal("hide");
-              $('#success').html('<div class="alert alert-info"><strong>Success!</strong> Yahoooo! Bonus Amount Earned</div>');
+              $('#success').html('<div class="alert alert-info"><strong>Success!</strong> wahoooo! Bonus Amount Earned</div>');
            setTimeout(
   function() 
   {
