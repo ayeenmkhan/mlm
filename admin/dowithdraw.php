@@ -181,7 +181,9 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                 <div class="form-group col-md-4">
                     <label>Payment Type</label>
                     <select name="txpaytype" id="txpaytype" class="form-control select1" required>
-                        <?php echo myvalidate($txpaytype_menu); ?>
+                        <option value="">Select</option>
+                        <option value="Online Transfer"<?php if($rowstr['txpaytype']=="Online Transfer"){echo "selected";}?>>Online Transfer</option>
+                        <option value="Cash Payment"<?php if($rowstr['txpaytype']=="Cash Payment"){echo "selected";}?>>Cash Payment</option>
                     </select>
                 </div>
                 <div class="form-group col-md-8">

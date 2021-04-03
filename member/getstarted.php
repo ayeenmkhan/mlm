@@ -3,6 +3,7 @@
 if (!defined('OK_LOADME')) {
     die('o o p s !');
 }
+// echo "<pre>";print_r(EMAIL);exit;
 // echo "<pre>";print_r($mbrstr);exit;
 if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'5000.00'){
 
@@ -225,10 +226,10 @@ setTimeout(
         },
       function(response) {
         if (response=='1') {
-          console.log(response);
+          // console.log(response);
           
           $("#loadMe").modal("hide");
-              $('#success').html('<div class="alert alert-info"><strong>Success!</strong> Yahoooo! Bonus Amount Earned</div>');
+              $('#success').html('<div class="alert alert-info"><strong>Success!</strong> wahoooo! Bonus Amount Earned</div>');
            setTimeout(
   function() 
   {
