@@ -44,6 +44,10 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
         // deduct wallet
         $ewallet = $mbrstr['ewallet'] - $txamount;
+        
+        /*After GST Deduction Amount*/
+        $gstTax= ($txamount/100)*18;
+        $taxDeducted= $txamount-$gstTax;
         if($ewallet >='1000'){
         $data = array(
             'ewallet' => $ewallet,
@@ -67,7 +71,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
             'txpaytype' => 'Manual Request',
             'txfromid' => $mbrstr['id'],
             'txtoid' => 0,
-            'txamount' => $txamount,
+            'txamount' => $taxDeducted,
             'txmemo' => $LANG['g_withdrawstr'],
             'txppid' => $mbrstr['mppid'],
             'txtoken' => '|WIDR:OUT|',
@@ -191,7 +195,7 @@ $myreftotal = $row[0]['totref'];
             <div class="card-footer bg-whitesmoke">
                 <div class="row">
                     <div class="col-sm-12">
-                        <?php //echo myvalidate($LANG['m_withdrawreqnote']); ?>
+                     <b>Note:</b>   18% of GST tax will be deducted from total amount of the withdrawl request.
                     </div>
                 </div>
             </div>
