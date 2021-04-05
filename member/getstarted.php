@@ -244,7 +244,7 @@ setTimeout(
       "json"
     );
 
-      }, 30000);
+      }, 6000);
     /*Wait funtion end here*/
 
   });
