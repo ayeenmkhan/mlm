@@ -132,7 +132,7 @@ $getstartstr = base64_decode($cfgrow['getstart']);
 </style>
 
 <div class="section-header">
-    <h1><i class="fa fa-fw fa-flag-checkered"></i> Click & Earn</h1>
+    <h1><i class="fa fa-fw fa-funnel-dollar"></i> Click & Earn</h1>
 </div>
 
 <div class="section-body">
