@@ -384,6 +384,15 @@ function getlog_sess($seskey, $isupdate = '') {
     return $sesRow;
 }
 
+function cronjobupdate($data,$counterData,$configid){
+global $db, $cfgrow;
+  $db->update(DB_TBLPREFIX . '_configs', $data, array('cfgid' => $configid));
+
+    $result= $db->update(DB_TBLPREFIX . '_mbrs', $counterData, array('mbrstatus' => 1));
+    if($result){
+        return true;
+    }
+}
 function dellog_sess($type = '') {
     global $db, $cfgrow;
 
