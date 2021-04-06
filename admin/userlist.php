@@ -258,15 +258,44 @@ $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs LEFT JOIN
                         $overview = "<label>Info</label><div>" . $val['adminfo'] . "</div>";
                         $mbrimgval = ($val['mbr_image']) ? $val['mbr_image'] : $cfgrow['mbr_defaultimage'];
                         $mbrimgvalstr = "<img alt='?' src='{$mbrimgval}'class='img-fluid float-left mr-3 rounded-circle img-thumbnail' width='96'>";
+
+                            if($val['ewallet']>='1000.00' && $val['ewallet']<'3000.00'){
+
+                                $LEVEL= '<span class="badge badge-primary font-weight-bold">Level One</span>';
+                            }
+                            if($val['ewallet']>='3000.00' && $val['ewallet']<'5000.00'){
+
+                                $LEVEL= '<span class="badge badge-secondary font-weight-bold">Level Two</span>';
+                            }
+                            if($val['ewallet']>='5000.00' && $val['ewallet']<'8000.00'){
+
+                                $LEVEL= '<span class="badge badge-success font-weight-bold">Level Three</span>';
+                            }
+                            if($val['ewallet']>='8000.00' && $val['ewallet']<'10000.00'){
+
+                                $LEVEL= '<span class="badge badge-danger font-weight-bold">Level Four</span>';
+                            }
+                            if($val['ewallet']>='10000.00' && $val['ewallet']<'15000.00'){
+
+                                $LEVEL= '<span class="badge badge-warning font-weight-bold">Level Five</span>';
+                            }
+                            if($val['ewallet']>='15000.00' && $val['ewallet']<'20000.00'){
+
+                                $LEVEL= '<span class="badge badge-info font-weight-bold">Level Six</span>';
+                            }
+                            if($val['ewallet']>='20000.00' && $val['ewallet']<'40000.00'){
+
+                                $LEVEL= '<span class="badge badge-light font-weight-bold">Level Seven</span>';
+                            }
+                            if($val['ewallet']>='40000.00'){
+
+                                $LEVEL= '<span class="badge badge-dark">LEVEL Eight</span>';
+                            }
                         ?>
                         <tr>
 
                             <td scope="row"><?php echo myvalidate($s); ?></td>
-                            <td scope="row"><?php if($val['ewallet']>='1000.00' && $val['ewallet']<'5000.00'){?><span class="badge badge-secondary 
-font-weight-bold">Level One</span><?php }else if($val['ewallet']>='5000.00' && $val['ewallet']<'10000.00'){?> <span class="badge badge-warning 
-font-weight-bold">Level Two</span> <?php 
-}else if($val['ewallet']>='10000.00' && $val['ewallet']<'20000.00'){?> <span class="badge badge-info font-weight-bold">Level Three</span> <?php }
-                                else if($val['ewallet']>='20000.00'){?><span class="badge badge-primary font-weight-bold">Level Four</span><?php }?></td>
+                            <td scope="row"><?php echo $LEVEL;?></td>
                             <td data-toggle="tooltip" title="<?php echo myvalidate($val['in_date']); ?>" nowrap><?php echo formatdate($val['in_date']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['firstname']) . ' ' . myvalidate($val['lastname']); ?>'><?php echo myvalidate($val['username']); ?></td>
                             <td data-toggle='tooltip' title='<?php echo myvalidate($val['email']); ?>'><?php echo myvalidate($stremail); ?></td>

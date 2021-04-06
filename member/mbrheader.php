@@ -23,21 +23,37 @@ $paymentStatus= getuserPaymentStatusID($mbrstr['id']);
 $paystaus= $paymentStatus[0]['mpstatus'];
 
 // echo "<pre>";print_r($mbrstr);exit;
-if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'5000.00'){
+if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'3000.00'){
 
-    $LEVEL= '<span class="badge badge-secondary font-weight-bold">Level One</span>';
+    $LEVEL= '<span class="badge badge-primary font-weight-bold">Level One</span>';
 }
-if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'10000.00'){
+if($mbrstr['ewallet']>='3000.00' && $mbrstr['ewallet']<'5000.00'){
 
-    $LEVEL= '<span class="badge badge-warning font-weight-bold">Level Two</span>';
+    $LEVEL= '<span class="badge badge-secondary font-weight-bold">Level Two</span>';
 }
-if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'20000.00'){
+if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'8000.00'){
 
-    $LEVEL= '<span class="badge badge-info font-weight-bold">Level Three</span>';
+    $LEVEL= '<span class="badge badge-success font-weight-bold">Level Three</span>';
 }
-if($mbrstr['ewallet']>='20000.00'){
+if($mbrstr['ewallet']>='8000.00' && $mbrstr['ewallet']<'10000.00'){
 
-    $LEVEL= '<span class="badge badge-primary">LEVEL FOUR</span>';
+    $LEVEL= '<span class="badge badge-danger font-weight-bold">Level Four</span>';
+}
+if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'15000.00'){
+
+    $LEVEL= '<span class="badge badge-warning font-weight-bold">Level Five</span>';
+}
+if($mbrstr['ewallet']>='15000.00' && $mbrstr['ewallet']<'20000.00'){
+
+    $LEVEL= '<span class="badge badge-info font-weight-bold">Level Six</span>';
+}
+if($mbrstr['ewallet']>='20000.00' && $mbrstr['ewallet']<'40000.00'){
+
+    $LEVEL= '<span class="badge badge-light font-weight-bold">Level Seven</span>';
+}
+if($mbrstr['ewallet']>='40000.00'){
+
+    $LEVEL= '<span class="badge badge-dark">LEVEL Eight</span>';
 }
 // if($paystaus==1){
 //     $coursesmenu=  <<<INI_HTML
