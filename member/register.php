@@ -364,10 +364,14 @@ $_SESSION['show_msg'] = '';
                                             <label>Package Plan <span class="text-danger">*</span></label>
                                                 <select class="form-control" name="package" id="package" onchange="selectPackageType(this.value)">
                                                    <option value="">Select</option>
-                                                   <option value="1000.00">1,000</option>
-                                                   <option value="5000.00">5,000</option>
-                                                   <option value="10000.00">10,000</option>
-                                                   <option value="20000.00">20,000</option>
+                                                          <option value="1000.00">1,000</option>
+                                                           <option value="3000.00">3,000</option>
+                                                           <option value="5000.00">5,000</option>
+                                                           <option value="8000.00">8,000</option>
+                                                           <option value="10000.00">10,000</option>
+                                                           <option value="15000.00">15,000</option>
+                                                           <option value="20000.00">20,000</option>
+                                                           <option value="40000.00">40,000</option>
                                                 </select>
                                      <input type="hidden" name="package_type" id="package_type" value="">
                                         </div>
@@ -473,14 +477,22 @@ INI_HTML;
     function selectPackageType(value){
 
         // alert(value);
-        if(value=='1000.00'){
+     if(value=='1000.00'){
             $('#package_type').val(1)
-        }if(value=='5000.00'){
+        } if(value=='3000.00'){
             $('#package_type').val(2)
-        }if(value=='10000.00'){
+        }if(value=='5000.00'){
             $('#package_type').val(3)
-        }if(value=='20000.00'){
+        }if(value=='8000.00'){
             $('#package_type').val(4)
+        }if(value=='10000.00'){
+            $('#package_type').val(5)
+        }if(value=='15000.00'){
+            $('#package_type').val(6)
+        }if(value=='20000.00'){
+            $('#package_type').val(7)
+        }if(value=='40000.00'){
+            $('#package_type').val(8)
         }
 
     }
