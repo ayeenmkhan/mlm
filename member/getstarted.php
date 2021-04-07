@@ -5,21 +5,53 @@ if (!defined('OK_LOADME')) {
 }
 // echo "<pre>";print_r(EMAIL);exit;
 // echo "<pre>";print_r($mbrstr);exit;
-if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'5000.00'){
+if($mbrstr['ewallet']>='1000.00' && $mbrstr['ewallet']<'3000.00'){
 
-    $level_amount= (1000/100)*1.1;
+    // $level_amount= (1000/100)*1.1;
+    $level_amount= rand(60,70);
+    $bonusTask=10;
 }
-if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'10000.00'){
+if($mbrstr['ewallet']>='3000.00' && $mbrstr['ewallet']<'5000.00'){
 
-    $level_amount= (5000/100)*2.1;
+    // $level_amount= (1000/100)*1.1;
+  $level_amount= rand(180,210);
+  $bonusTask=12;
 }
-if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'20000.00'){
+if($mbrstr['ewallet']>='5000.00' && $mbrstr['ewallet']<'8000.00'){
 
-    $level_amount= (10000/100)*3.1;
+    // $level_amount= (5000/100)*2.1;
+  $level_amount= rand(300,350);
+  $bonusTask=14;
 }
-if($mbrstr['ewallet']>='20000.00'){
+if($mbrstr['ewallet']>='8000.00' && $mbrstr['ewallet']<'10000.00'){
 
-    $level_amount= (20000/100)*4.1;
+    // $level_amount= (5000/100)*2.1;
+  $level_amount= rand(480,560);
+  $bonusTask=16;
+}
+if($mbrstr['ewallet']>='10000.00' && $mbrstr['ewallet']<'15000.00'){
+
+    // $level_amount= (5000/100)*2.1;
+  $level_amount= rand(650,700);
+  $bonusTask=18;
+}
+if($mbrstr['ewallet']>='15000.00' && $mbrstr['ewallet']<'20000.00'){
+
+    // $level_amount= (5000/100)*2.1;
+  $level_amount= rand(975,1125);
+  $bonusTask=20;
+}
+if($mbrstr['ewallet']>='20000.00' && $mbrstr['ewallet']<'40000.00'){
+
+    // $level_amount= (10000/100)*3.1;
+  $level_amount= rand(1300,1500);
+  $bonusTask=22;
+}
+if($mbrstr['ewallet']>='40000.00'){
+
+    // $level_amount= (20000/100)*4.1;
+  $level_amount= rand(2600,3000);
+  $bonusTask=24;
 }
 
 $wallet= $mbrstr['ewallet']+$level_amount;
@@ -151,8 +183,9 @@ $getstartstr = base64_decode($cfgrow['getstart']);
 
                   </div>
                   <div class="col-sm-6 pt-2 text-center">
+                    <input type="hidden" id="bonusTask" value="<?php echo $bonusTask;?>">
                     <input type="hidden" name="" id="counter" value="<?php echo $mbrstr['counter'] ?>">
-                      <h4><?php echo $mbrstr['counter'] ? $mbrstr['counter'] : '0'?>/20</h4>
+                      <h4><?php echo $mbrstr['counter'] ? $mbrstr['counter'] : '0'?>/<?php echo $bonusTask;?></h4>
                   </div>
 
                 </div>
@@ -193,7 +226,8 @@ $getstartstr = base64_decode($cfgrow['getstart']);
   //Adding a delay so we can see the functionality of the loader while request processes
   $("#load_me_baby").on("click", function(e) {
    var counterNumber= $('#counter').val();
-    if(counterNumber>=20){
+   var bonusTask= $('#bonusTask').val();
+    if(counterNumber>=bonusTask){
       alert("Today Earning Quota is End");
       return false;
       exit();
