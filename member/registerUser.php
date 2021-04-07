@@ -101,7 +101,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                 $cntaddarr['login_url'] = $cfgrow['site_url'] . "/" . MBRFOLDER_NAME;
                 $cntaddarr['rawpassword'] = $passwordconfirm;
 
-                delivermail('mbr_reg', $newmbrid, $cntaddarr);
+                // delivermail('mbr_reg', $newmbrid, $cntaddarr);
 
                 // if ($cfgtoken['isautoregplan'] == 1) {
                     // register to membership

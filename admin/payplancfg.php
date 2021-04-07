@@ -53,6 +53,10 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         'cmlist_two' => $cmlist_two,
         'cmlist_three' => $cmlist_three,
         'cmlist_four' => $cmlist_four,
+        'cmlist_five' => $cmlist_five,
+        'cmlist_six' => $cmlist_six,
+        'cmlist_seven' => $cmlist_seven,
+        'cmlist_eight' => $cmlist_eight,
         'rwlist' => $rwlist,
         'level_bages' => $level_bages,
         'planstatus' => intval($planstatus),
@@ -142,7 +146,7 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                     <input type="hidden" name="hal" value="payplancfg">
 
                     <div class="card-header">
-                        <h4>Options</h4>
+                        <h4>Packages</h4>
                     </div>
 
                     <div class="card-body">
@@ -257,23 +261,45 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                                     <label for="cmdrlist">Personal Referral Commission</label>
                                     <input type="text" name="cmdrlist" id="cmdrlist" class="form-control" value="<?php echo isset($bpprow['cmdrlist']) ? $bpprow['cmdrlist'] : ''; ?>" placeholder="Personal referral commission">
                                 </div> -->
-
-                                <div class="form-group">
-                                    <label for="cmlist">Package One Commission</label>
+                            <div class="form-row">
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">1st Package Commission</label>
                                     <textarea class="form-control rowsize-sm" name="cmlist" id="cmlist" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist']) ? $bpprow['cmlist'] : ''; ?></textarea>
                                 </div>  
-                                 <div class="form-group">
-                                    <label for="cmlist">Package Two Commission</label>
+                                 <div class="form-group col-md-6">
+                                    <label for="cmlist">2nd Package Commission</label>
                                     <textarea class="form-control rowsize-sm" name="cmlist_two" id="cmlist_two" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_two']) ? $bpprow['cmlist_two'] : ''; ?></textarea>
-                                </div>   
-                                <div class="form-group">
-                                    <label for="cmlist">Package Three Commission</label>
+                                </div> 
+                              
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">3rd Package Commission</label>
                                     <textarea class="form-control rowsize-sm" name="cmlist_three" id="cmlist_three" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_three']) ? $bpprow['cmlist_three'] : ''; ?></textarea>
                                 </div>   
-                                <div class="form-group">
-                                    <label for="cmlist">Package Four Commission</label>
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">4th Package Commission</label>
                                     <textarea class="form-control rowsize-sm" name="cmlist_four" id="cmlist_four" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_four']) ? $bpprow['cmlist_four'] : ''; ?></textarea>
                                 </div>
+                         
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">5th Package Commission</label>
+                                    <textarea class="form-control rowsize-sm" name="cmlist_five" id="cmlist_five" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_five']) ? $bpprow['cmlist_five'] : ''; ?></textarea>
+                                </div>   
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">6th Package Commission</label>
+                                    <textarea class="form-control rowsize-sm" name="cmlist_six" id="cmlist_six" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_six']) ? $bpprow['cmlist_six'] : ''; ?></textarea>
+                                </div>
+                        
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">7th Package  Commission</label>
+                                    <textarea class="form-control rowsize-sm" name="cmlist_seven" id="cmlist_seven" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_seven']) ? $bpprow['cmlist_seven'] : ''; ?></textarea>
+                                </div>   
+                                <div class="form-group col-md-6">
+                                    <label for="cmlist">8th Package Commission</label>
+                                    <textarea class="form-control rowsize-sm" name="cmlist_eight" id="cmlist_eight" placeholder="Commission list, separated with comma"><?php echo isset($bpprow['cmlist_eight']) ? $bpprow['cmlist_eight'] : ''; ?></textarea>
+                                
+                            </div>
+                            </div>
 
                             <!--     <div class="form-group">
                                     <label for="rwlist">Level Complete Reward</label>

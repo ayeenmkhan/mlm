@@ -316,7 +316,7 @@ $expdatestr = ($mbrstr['reg_expd'] > $mbrstr['reg_date']) ? 'Expiration: ' . for
 
             if (intval($mbrstr['confirm_email']) == 0 ) {
                 ?>
-                <div class="alert alert-light alert-has-icon">
+             <!--    <div class="alert alert-light alert-has-icon">
                     <div class="alert-icon text-danger"><i class="far fa-bell"></i></div>
                     <div class="alert-body text-danger">
                         <div class="alert-title">Email Address Is not verified!</div>
@@ -330,7 +330,7 @@ $expdatestr = ($mbrstr['reg_expd'] > $mbrstr['reg_date']) ? 'Expiration: ' . for
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <?php
             }
             ?>

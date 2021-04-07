@@ -93,7 +93,7 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
         $mptoken = put_optionvals($mptoken, 'istrial', '0');
     }
 
-    echo '<pre>';print_r($txamount);
+    // echo '<pre>';print_r($txamount);
     if ($txamount <= $txamount || $skipamount == 1) {
         // member
         $data = array(
@@ -137,6 +137,14 @@ function doipnbox($txmpid, $payamount, $paygate, $txbatch, $redirurl, $ipnreturn
                 $commission_percentage= $bpprow['cmlist_three'];
             }if($package=='4'){
                 $commission_percentage= $bpprow['cmlist_four'];
+            }if($package=='5'){
+                $commission_percentage= $bpprow['cmlist_five'];
+            }if($package=='6'){
+                $commission_percentage= $bpprow['cmlist_six'];
+            }if($package=='7'){
+                $commission_percentage= $bpprow['cmlist_seven'];
+            }if($package=='8'){
+                $commission_percentage= $bpprow['cmlist_eight'];
             }
 
             $sprstr = getmbrinfo($mbrstr['idspr']);
