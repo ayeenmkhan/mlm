@@ -197,8 +197,8 @@ include('../common/pub.header.php');
             <span class="hamburger-icon-big-line"></span>
             <span class="hamburger-icon-small-line"></span>
         </button>
-        <a class="navbar-brand" href="https://immortalsuccess.com/" id="header-logo">
-            <img id="header-logo-image" src="../assets/image/logo_defaultimage.png" alt="#" style="max-height:30px">
+        <a class="navbar-brand" href="<?= SURL ?>/member/login.php" id="header-logo">
+            <img id="header-logo-image" src="../assets/image/logo_new.png" alt="#" style="max-height:80px">
         </a>
     </div>
     <nav class="">
