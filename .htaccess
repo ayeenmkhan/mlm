@@ -1,4 +1,8 @@
-RewriteEngine On
-RewriteCond %{HTTP_HOST} immortalsuccess\.com [NC]
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://immortalsuccess.com/$1 [R,L]
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?fastearning.online$
+RewriteCond %{REQUEST_URI} !^/member/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /member/$1
+RewriteCond %{HTTP_HOST} ^(www.)?fastearning.online$
+RewriteRule ^(/)?$ member/index.php [L]
