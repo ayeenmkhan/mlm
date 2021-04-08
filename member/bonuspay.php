@@ -1,5 +1,4 @@
 <?php
-
 include_once('../common/init.loader.php');
 $counter= $_POST['counter'];
 $user_id= $_POST['user_id'];
@@ -10,6 +9,7 @@ $mbrstr = json_decode($_POST['mbrstr'],true);
 // $mbrstr= array() $decodeArray;
 // 
 // echo "<pre>";print_r($mbrstr['idspr']);exit();
+
 $restult=updateBonusCounter($counter,$wallet,$user_id);
 
             // Earning commission list

@@ -198,7 +198,11 @@ if (count($userData) > 0) {
 
 $expdatestr = ($mbrstr['reg_expd'] > $mbrstr['reg_date']) ? 'Expiration: ' . formatdate($mbrstr['reg_expd']) : '';
 
-
+// Creating Base Url
+$d_Url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+$d_Url .= $_SERVER['SERVER_NAME'];
+$d_Url .= $_SERVER['REQUEST_URI'];
+$baseUrl = dirname(dirname($d_Url));
 
 
 ?>
@@ -381,8 +385,10 @@ $expdatestr = ($mbrstr['reg_expd'] > $mbrstr['reg_date']) ? 'Expiration: ' . for
                                     <div class="media-body">
                                         <div class="text-small"><?php echo myvalidate($LANG['g_refurl']); ?></div>
                                         <div class="media-title">
-                                            <a href="<?php echo myvalidate($cfgrow['site_url']) . '/' . UIDFOLDER_NAME . '/' . $mbrstr['username']; ?>" target="_blank" data-toggle="tooltip" title="<?php echo myvalidate($cfgrow['site_url']) . '/' . UIDFOLDER_NAME . '/' . $mbrstr['username']; ?>">
-                                                <span class="d-none d-sm-block"><?php echo myvalidate($cfgrow['site_url']) . '/' . UIDFOLDER_NAME . '/' . $mbrstr['username']; ?></span>
+                                            <a href="<?php echo myvalidate($baseUrl) . '/' . UIDFOLDER_NAME . '/' . $mbrstr['username']; ?>" 
+target="_blank" data-toggle="tooltip" title="<?php echo myvalidate($baseUrl) . '/' . UIDFOLDER_NAME . '/' . $mbrstr['username']; ?>">
+                                                <span class="d-none d-sm-block"><?php echo myvalidate($baseUrl) . '/' . UIDFOLDER_NAME . '/' . 
+$mbrstr['username']; ?></span>
                                                 <span class="d-sm-none"><i class="fa fa-fw fa-link"></i></span>
                                             </a>
                                         </div>
