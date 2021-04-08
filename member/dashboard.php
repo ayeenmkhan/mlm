@@ -341,7 +341,7 @@ $expdatestr = ($mbrstr['reg_expd'] > $mbrstr['reg_date']) ? 'Expiration: ' . for
                     <div class="alert-icon text-info"><i class="far fa-bell"></i></div>
                     <div class="alert-body text-info">
                         <div class="alert-title">Profile verification Pending!</div>
-                        <p>The course content will be accessible after payment verification</p>
+                        <p>The Bonus Earning section will be accessible after payment verification</p>
                     </div>
                 </div>
         <?php }?>

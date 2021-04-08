@@ -14,11 +14,13 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     $lastname = mystriptag($lastname);
     $username = mystriptag($username, 'user');
     $email = mystriptag($email, 'email');
+    $phone = mystriptag($phone, 'phone');
 
     $_SESSION['firstname'] = $firstname;
     $_SESSION['lastname'] = $lastname;
     $_SESSION['username'] = $username;
     $_SESSION['email'] = $email;
+    $_SESSION['phone'] = $phone;
 
     $isrecapv3 = 1;
     if ($cfgrow['isrecaptcha'] == 1 && isset($FORM['g-recaptcha-response'])) {
@@ -63,6 +65,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         //     redirpageto($redirval);
         //     exit;
         // }
+        $six_digit_random_number = mt_rand(100000, 999999);
 
         $in_date = date('Y-m-d H:i:s', time() + (3600 * $cfgrow['time_offset']));
 
@@ -83,16 +86,20 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                 'ewallet' => mystriptag($package),
                 'payment_id' => $razorpay_payment_id,
                 'email' => $email,
+                'phone' => $phone,
+                'validation_code' => $six_digit_random_number,
                 'password' => $password,
             );
                 // var_dump($data);exit();
             $insert = $db->insert(DB_TBLPREFIX . '_mbrs', $data);
             $newmbrid = $db->lastInsertId();
+            // $newmbrid = 1;
 
             $_SESSION['firstname'] = $_SESSION['lastname'] = $_SESSION['username'] = $_SESSION['email'] = '';
 
             $_SESSION['customer_name']= $firstname . ' ' . $lastname;
             $_SESSION['customer_email']= $email;
+            $_SESSION['customer_phone']= $phone;
             if ($insert) {
                 require_once('../common/mailer.do.php');
 
@@ -117,8 +124,15 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
                 addlog_sess($username, 'member');
                 // $redirval = $cfgrow['site_url'] . "/" . MBRFOLDER_NAME;
+
+             /*Send Verification code through SMS*/
+                $smsResponse= sendVerificationCode($phone,$six_digit_random_number);
+                if($smsResponse){
                 $amount= (int)$package*100;
-                $redirval = SURL . "/member/razorpay.php?user_id=".$newmbrid."&package=".$amount."";
+                $redirval = SURL . "/member/validate_phone.php?user_id=".$newmbrid."&package=".$amount."";
+                
+                }
+            
                 // var_dump($redirval);exit;
             } else {
                 $redirval = "?res=errsql";

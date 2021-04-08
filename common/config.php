@@ -22,7 +22,7 @@ define('DB_TBLPREFIX', 'netw');
 
 // define('INSTALL_PATH', 'C:\localhost');
 define('INSTALL_PATH', $_SERVER['DOCUMENT_ROOT'].'/mlm');
-define('SURL','https://'.$_SERVER['HTTP_HOST'].'/mlm');
+define('SURL','http://'.$_SERVER['HTTP_HOST'].'/mlm');
 define('EMAIL', $_SERVER['HTTP_HOST'].'/mlm/');
 define('DECIMAL_POINT', 2);
 
