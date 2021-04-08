@@ -164,7 +164,7 @@ $getstartstr = base64_decode($cfgrow['getstart']);
 </style>
 
 <div class="section-header">
-    <h1><i class="fa fa-fw fa-flag-checkered"></i> Click & Earn</h1>
+    <h1><i class="fa fa-fw fa-funnel-dollar"></i> Click & Earn</h1>
 </div>
 
 <div class="section-body">
@@ -225,13 +225,19 @@ $getstartstr = base64_decode($cfgrow['getstart']);
   //ajax code here (example for $.post) using test page from https://reqres.in
   //Adding a delay so we can see the functionality of the loader while request processes
   $("#load_me_baby").on("click", function(e) {
+   $("#load_me_baby").attr("disabled","true");
    var counterNumber= $('#counter').val();
    var bonusTask= $('#bonusTask').val();
-    if(counterNumber>=bonusTask){
+   
+   //Parsing the values to interger
+   counterNumber = +counterNumber;
+   bonusTask = +bonusTask; 
+   if(counterNumber >= bonusTask){
       alert("Today Earning Quota is End");
       return false;
       exit();
     }
+    $("#load_me_baby").text("Please wait...");
     e.preventDefault();
     $("#loadMe").modal({
       backdrop: "static", //remove ability to close modal with click
@@ -278,7 +284,7 @@ setTimeout(
       "json"
     );
 
-      }, 30000);
+      }, 6000);
     /*Wait funtion end here*/
 
   });

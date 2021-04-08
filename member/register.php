@@ -277,20 +277,20 @@ $_SESSION['show_msg'] = '';
             <span class="hamburger-icon-big-line"></span>
             <span class="hamburger-icon-small-line"></span>
         </button>
-        <a class="navbar-brand" href="#" id="header-logo">
-            <img id="header-logo-image" src="../assets/image/logo_defaultimage.png" alt="" style="max-height:30px">
+        <a class="navbar-brand" href="<?= SURL ?>/member/login.php" id="header-logo">
+            <img id="header-logo-image" src="../assets/image/logo_new.png" alt="" style="max-height:80px">
         </a>
     </div>
     <nav class="">
         <div class="mobile-icon">
             <span onclick="document.querySelector('nav').style.transform='translateX(-100%)';">&times;</span>
-            <a class="navbar-brand" href="#">
-                <img id="header-logo-image" src="../assets/image/logo_defaultimage.png for mobile menu.png" alt="">
+            <a class="navbar-brand" href="<?= SURL?>/member/login.php">
+                <img id="header-logo-image" src="../assets/image/logo_new.png" alt="" style="max-height:80px">
             </a>
         </div>
-        <a class="" href="#">About Us</a>
-        <a class="" href="#">Contact Us</a>
-        <a class="btn btn-danger" href="login.php">Log in</a>
+        <a class="" href="aboutus.php">About Us</a>
+        <a class="" href="contactus.php">Contact Us</a>
+        <a class="btn btn-danger" href="/member/login.php">Log in</a>
     </nav>
 </header>
 <section class="section">

@@ -84,7 +84,7 @@ $member_content = <<<INI_HTML
         <meta name="keywords" content="{$cfgrow['site_keywrd']}">
         <meta name="author" content="MLMScript.net">
 
-        <link rel="shortcut icon" type="image/png" href="../assets/image/favicon.ico"/>
+        <link rel="shortcut icon" type="image/png" href="../assets/image/logo_new.png"/>
 
         <!-- General CSS Files -->
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">

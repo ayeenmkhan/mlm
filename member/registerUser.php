@@ -94,7 +94,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
             $_SESSION['customer_name']= $firstname . ' ' . $lastname;
             $_SESSION['customer_email']= $email;
             if ($insert) {
-                require_once('../common/mailer.do.php');
+                //require_once('../common/mailer.do.php');
 
                 // send welcome email
                 $cntaddarr['fullname'] = $firstname . ' ' . $lastname;

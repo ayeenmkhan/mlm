@@ -7,10 +7,10 @@ $site_subname = ($cfgtoken['site_subname'] != '') ? "<a href='#'>{$cfgtoken['sit
 
 $page_content = <<<INI_HTML
                 <div class="simple-footer">
-                    <!--
-                    You are not allowed to remove the UniMatrix link unless you have right to do so by own the Extended license or order the Branding Removal license at https://www.mlmscript.net/order
-                    -->
-                    <div class="text-small">Crafted with <i class="fa fa-fw fa-heart"></i> copyright © systemX {$thisyear} <div class="bullet"></div> {$site_subname}</div>
+                    <div> <div class="bullet"></div> <a target="_blank" 
+href="https://www.termsandconditionsgenerator.com/live.php?token=fTOviCHzZmyxCB2zm9G7abLE3jjcOsYO" 
+>Terms&Conditions</a> | <a href="https://www.privacypolicygenerator.info/live.php?token=phtCcnc793UoOr5hCtjq6a0qfznCQPv9" target="_blank"> Privacy Policy 
+</a></div>
                 </div>
 </div>
 
