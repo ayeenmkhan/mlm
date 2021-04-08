@@ -208,8 +208,8 @@ include('../common/pub.header.php');
                 <img id="header-logo-image" src="../assets/image/logo_defaultimage.png for mobile menu.png" alt="">
             </a>
         </div>
-        <a class="" href="#">About Us</a>
-        <a class="" href="#">Contact Us</a>
+        <a class="" href="aboutus.php">About Us</a>
+        <a class="" href="contactus.php">Contact Us</a>
         <a class="btn btn-danger" href="register.php">Sign up</a>
     </nav>
 </header>
