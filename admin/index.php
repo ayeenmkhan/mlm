@@ -16,6 +16,7 @@ if ($seskey == '') {
     exit;
 }
 $admSess = getlog_sess($seskey);
+
 $logtimeago = time_since($admSess['sestime']);
 
 // language list

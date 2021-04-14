@@ -10,7 +10,7 @@ if (isset($FORM['getId']) and $FORM['getId'] != "") {
         redirpageto('index.php?hal=userlist?err');
         exit;
     }
- // echo "<pre>";print_r($rowstr);exit();
+    // echo "<pre>";print_r($rowstr);exit();
     // get transaction details
     $condition = ' AND txtoken LIKE "%|REG:' . $rowstr['mpid'] . '|%" ';
     $row = $db->getAllRecords(DB_TBLPREFIX . '_transactions', '*', $condition);
@@ -141,12 +141,15 @@ INI_HTML;
                         </div>
                         <div class="profile-widget-item">
                             <div class="profile-widget-item-label">Wallet</div>
-                            <div class="profile-widget-item-value"><?php echo number_format($rowstr['ewallet'],2); ?></div>
+                            <div class="profile-widget-item-value"><?php echo number_format($rowstr['ewallet'], 2); ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="profile-widget-description">
-                    <div class="profile-widget-name"><?php echo myvalidate($rowstr['username']); ?> <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> <?php echo formatdate($rowstr['in_date'], 'dt'); ?></div></div>
+                    <div class="profile-widget-name"><?php echo myvalidate($rowstr['username']); ?> <div class="text-muted d-inline font-weight-normal">
+                            <div class="slash"></div> <?php echo formatdate($rowstr['in_date'], 'dt'); ?>
+                        </div>
+                    </div>
                     <div class="mt-4"><?php echo base64_decode($rowstr['mbr_intro']); ?></div>
                 </div>
             </div>
@@ -167,18 +170,16 @@ INI_HTML;
             </div>
 
             <article class="article mt-4">
-              <!--   <div class="article-header">
-                    <div class="article-image" data-background="<?php echo myvalidate($planlogo); ?>">
-                    </div>
-                    <div class="article-title">
-                        <h2 class="badge badge-primary"><?php echo ($bpprow['ppname']) ? myvalidate($bpprow['ppname']) : $cfgrow['site_name']; ?> - <?php echo ($bpprow['regfee'] > 0) ? myvalidate($bpprow['currencysym'] . $bpprow['regfee'] . ' ' . $bpprow['currencycode']) : 'FREE'; ?></h2>
-                    </div>
-                </div> -->
+                
                 <div class="article-details">
-                    <div><?php echo ($bpprow['planinfo']) ? myvalidate($bpprow['planinfo']) : '-'; ?></div>
+                    <div>
+                        <h5 class="text-center">Member Status</h5>
+                        <br>
+                    </div>
                     <div class='article-cta mt-4'>
                         <?php echo myvalidate($markstatus . $statusactstr); ?>
                     </div>
+                    <br>
                 </div>
             </article>
 
@@ -253,16 +254,31 @@ INI_HTML;
                                 <h6><?php echo myvalidate($countrystr); ?></h6>
                             </div>
                         </div>
+
+                        <?php if($admSess['sestype'] === 'admin') {?>
+
                         <div class="row">
                             <div class="form-group col-12">
-                                <label>Website <?php echo myvalidate($showsite_cekicon); ?></label>
-                                <div class="text-muted font-weight-normal"><?php echo myvalidate($mbrsite_catstr); ?></div>
-                                <h6><a href="<?php echo myvalidate($rowstr['mbrsite_url']); ?>" target="_blank" data-html="true" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="<?php echo myvalidate($siteimgstr); ?>"><?php echo myvalidate($rowstr['mbrsite_title']); ?></a></h6>
-                                <div class="text-muted form-text">
-                                    <?php echo base64_decode($rowstr['mbrsite_desc']); ?>
-                                </div>
+                                <label>Bank Name</label>
+                                <h6><?php echo myvalidate(base64_decode($rowstr['bankname'])); ?></h6>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>Bank Name</label>
+                                <h6><?php echo myvalidate(base64_decode($rowstr['accountnum'])); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label>Bank Name</label>
+                                <h6><?php echo myvalidate(base64_decode($rowstr['bankifsc'])); ?></h6>
+                            </div>
+                        </div>
+                        <?php } ?>
+
                         <div class="row">
                             <div class="form-group col-12">
                                 <label>Subscribe to notifications</label>
@@ -271,20 +287,20 @@ INI_HTML;
                         </div>
                         <div class="row">
                             <div class="col-12"><?php
-                                if ($mbr_twitter) {
-                                    ?>
+                                                if ($mbr_twitter) {
+                                                ?>
                                     <span class="badge badge-success">
                                         <i class="fab fa-fw fa-twitter"></i> <?php echo myvalidate($mbr_twitter); ?>
                                     </span>
-                                    <?php
-                                }
-                                if ($mbr_facebook) {
-                                    ?>
+                                <?php
+                                                }
+                                                if ($mbr_facebook) {
+                                ?>
                                     <span class="badge badge-success">
                                         <i class="fab fa-fw fa-facebook-f"></i> <?php echo myvalidate($mbr_facebook); ?>
                                     </span>
-                                    <?php
-                                }
+                                <?php
+                                                }
                                 ?>
                             </div>
                         </div>

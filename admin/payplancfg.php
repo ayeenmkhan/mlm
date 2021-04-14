@@ -27,7 +27,6 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
     extract($FORM);
 
-    $planlogo = imageupload('planlogo', $_FILES['planlogo'], $old_planlogo);
     $paymupdate = date('Y-m-d H:i:s', time() + (3600 * $cfgrow['time_offset']));
 
     $basedata = array(
@@ -42,8 +41,6 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     $data = array(
         'ppname' => mystriptag($ppname),
         'planinfo' => mystriptag($planinfo),
-        'planlogo' => $planlogo,
-        'regfee' => floatval($regfee),
         'limitref' => intval($limitref),
         'ifrollupto' => intval($ifrollupto),
         'minref2getcm' => $minref2getcm,
@@ -125,19 +122,7 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                     </ul>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4><?php echo isset($bpprow['ppname']) ? $bpprow['ppname'] : 'Program'; ?></h4>
-                </div>
-                <div class="card-body">
-                    <div class="mb-2 text-muted text-small">Update: <?php echo isset($bpprow['paymupdate']) ? $bpprow['paymupdate'] : '-'; ?></div>
-                    <div class="chocolat-parent">
-                        <div>
-                            <img alt="image" src="<?php echo myvalidate($planlogo); ?>" class="img-fluid rounded author-box-picture">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <div class="col-md-8">	
             <div class="card">
@@ -162,18 +147,10 @@ $iconstatusplanstr = ($bpprow['planstatus'] == 1) ? "<i class='fa fa-check text-
                                     <textarea class="form-control rowsize-sm" name="planinfo" id="planinfo" placeholder="Program Description"><?php echo isset($bpprow['planinfo']) ? $bpprow['planinfo'] : ''; ?></textarea>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="planlogo">Program Image</label>
-                                    <input type="file" name="planlogo" id="planlogo" class="form-control">
-                                    <input type="hidden" name="old_planlogo" value="<?php echo myvalidate($planlogo); ?>">
-                                    <div class="form-text text-muted">The image must have a maximum size of 1MB</div>
-                                </div>
+                               
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="regfee">Registration Fee</label>
-                                        <input type="text" name="regfee" id="regfee" class="form-control" value="<?php echo isset($bpprow['regfee']) ? $bpprow['regfee'] : '0'; ?>" placeholder="750" required>
-                                    </div>
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="selectgroup-pills">Program Status</label>
                                         <div class="selectgroup selectgroup-pills">
