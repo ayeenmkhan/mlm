@@ -66,7 +66,7 @@ $banusmenu = '';
 if ($mbrstr['ewallet'] > 1) {
     $banusmenu = <<<INI_HTML
                              <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-funnel-dollar"></i><span>Earn Bonuses</span></a></li> 
-                INI_HTML;
+INI_HTML;
 }
 
 
