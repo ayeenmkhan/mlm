@@ -266,14 +266,14 @@ INI_HTML;
 
                         <div class="row">
                             <div class="form-group col-12">
-                                <label>Bank Name</label>
+                                <label>Account Number</label>
                                 <h6><?php echo myvalidate(base64_decode($rowstr['accountnum'])); ?></h6>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group col-12">
-                                <label>Bank Name</label>
+                                <label>Bank IFSC</label>
                                 <h6><?php echo myvalidate(base64_decode($rowstr['bankifsc'])); ?></h6>
                             </div>
                         </div>
