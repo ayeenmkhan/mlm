@@ -38,20 +38,16 @@ if (isset($_FILES['mbr_image']) && $_FILES['mbr_image']["tmp_name"] != '') {
 
 if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     extract($FORM);
-          // if new email exist, check aadhar card and pan card 
+    // if new email exist, check aadhar card and pan card 
 
     $condition = ' AND adhar_card LIKE "' . $FORM['adhar_card'] . '" LIMIT 1';
     // echo $myquery = "SELECT * FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition . "";
     $Checksql = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition . "");
     // var_dump($Checksql[0]['adhar_card']);exit;
-    $checkAdhar='';
-    $checkPanCard='';
-    if($Checksql[0]['adhar_card']==null){
-        $checkAdhar= 'null';
-    }else if($Checksql[0]['adhar_card']==$adhar_card){
-        $checkAdhar= 'match';
-    } 
-    
+    $checkAdhar = '';
+    $checkPanCard = '';
+
+
 
     $mbr_sosmed = put_optionvals($mbr_sosmed, 'mbr_twitter', mystriptag($mbr_twitter));
     $mbr_sosmed = put_optionvals($mbr_sosmed, 'mbr_facebook', mystriptag($mbr_facebook));
@@ -67,13 +63,13 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         exit;
     }
 
-    if ($checkAdhar!='null' || $checkAdhar=='match') {
-        // do nothing
-        $_SESSION['dotoaster'] = "toastr.warning('<strong>Existed Account with same Adhar Card!</strong>', 'Warning');";
-         redirpageto('index.php?hal=' . $hal);
-        exit;
-    }else{
-        if ($mbrstr['mbrstatus'] > 1) {
+    // if ($checkAdhar!='null' || $checkAdhar=='match') {
+    //     // do nothing
+    //     $_SESSION['dotoaster'] = "toastr.warning('<strong>Existed Account with same Adhar Card!</strong>', 'Warning');";
+    //      redirpageto('index.php?hal=' . $hal);
+    //     exit;
+    // }else{
+    if ($mbrstr['mbrstatus'] > 1) {
         $_SESSION['dotoaster'] = "toastr.error('You did not change anything!', 'Account limited');";
         redirpageto('index.php?hal=' . $hal);
         exit;
@@ -88,7 +84,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     }
 
     $mbr_intro = mystriptag($mbr_intro);
- 
+
     $data = array(
         'firstname' => mystriptag($firstname),
         'lastname' => mystriptag($lastname),
@@ -109,28 +105,13 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         'mbrsite_cat' => $mbrsite_cat,
         'mbrsite_img' => $mbrsite_img,
         'showsite' => $showsite,
+        'bankname' => base64_encode(mystriptag($bankname)),
+        'accountnum' => base64_encode(mystriptag($accountnum)),
+        'bankifsc' => base64_encode(mystriptag($bankifsc)),
     );
 
     $update = $db->update(DB_TBLPREFIX . '_mbrs', $data, array('id' => $mbrstr['id']));
-    include_once('../common/mailer.do.php');
-    validatemail($email,$firstname." ".$lastname,$mbrstr['id']);
-    // ---
-    $data = array(
-        'paypalacc' => base64_encode(mystriptag($paypalacc)),
-        'coinpaymentsmercid' => base64_encode(mystriptag($coinpaymentsmercid)),
-        'manualpayipn' => base64_encode(mystriptag($manualpayipn)),
-    );
-    $condition = ' AND pgidmbr = "' . $mbrstr['id'] . '" ';
-    $sql = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_paygates WHERE 1 " . $condition . "");
-    if (count($sql) > 0) {
-        $update1 = $db->update(DB_TBLPREFIX . '_paygates', $data, array('pgidmbr' => $mbrstr['id']));
-    } else {
-        $data_add = array(
-            'pgidmbr' => $mbrstr['id'],
-        );
-        $data = array_merge($data, $data_add);
-        $insert = $db->insert(DB_TBLPREFIX . '_paygates', $data);
-    }
+
     // ---
 
     if ($update0 || $update || $update1 || $insert) {
@@ -142,7 +123,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     redirpageto('index.php?hal=' . $hal);
     exit;
 }
-}
+
 
 $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcrumb"><i class="fa fa-2x fa-fw fa-lock text-danger"></i></div>' : '';
 ?>
@@ -154,7 +135,7 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
 
 <div class="section-body">
     <div class="row">
-        <div class="col-md-4">	
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header text-center">
                     <h4><?php echo myvalidate($mbrstr['username']); ?></h4>
@@ -181,9 +162,9 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                         <li class="nav-item">
                             <a class="nav-link" id="config-tab2" data-toggle="tab" href="#cfgtab2" role="tab" aria-controls="account" aria-selected="false">Account</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" id="config-tab3" data-toggle="tab" href="#cfgtab3" role="tab" aria-controls="website" aria-selected="false">Website</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" id="config-tab4" data-toggle="tab" href="#cfgtab4" role="tab" aria-controls="password" aria-selected="false">Password</a>
                         </li>
@@ -191,7 +172,7 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                 </div>
             </div>
         </div>
-        <div class="col-md-8">	
+        <div class="col-md-8">
             <div class="card">
 
                 <form method="post" action="index.php" id="cfgform" oninput='password1.setCustomValidity(password2.value != password1.value ? "Passwords do not match." : "")' onsubmit="verify()">
@@ -218,8 +199,8 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label><?php echo myvalidate($LANG['g_adharecard']); ?> <span class="text-danger">*</span></label>
-                                        <input type="text"  maxlength="12" name="adhar_card" id="adhar_card" class="form-control" value="<?php echo isset($mbrstr['adhar_card']) ? $mbrstr['adhar_card'] : ''; ?>" placeholder="Aahar Card Number" required>
-                                      
+                                        <input type="text" maxlength="12" name="adhar_card" id="adhar_card" class="form-control" value="<?php echo isset($mbrstr['adhar_card']) ? $mbrstr['adhar_card'] : ''; ?>" placeholder="Aahar Card Number" required>
+
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label><?php echo myvalidate($LANG['g_pancard']); ?> <span class="text-danger">*</span></label>
@@ -229,9 +210,9 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <?php if($mbrstr['confirm_email']==0){?>
-                                        <span class="text-danger">Unverified</span>
-                                        <?php }?>
+                                        <?php if ($mbrstr['confirm_email'] == 0) { ?>
+                                            <span class="text-danger">Unverified</span>
+                                        <?php } ?>
                                         <label>Email <span class="text-danger">*</span></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -244,11 +225,11 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                                         <label for="selectgroup-pills">Opt-in for Notifications</label>
                                         <div class="selectgroup selectgroup-pills">
                                             <label class="selectgroup-item">
-                                                <input type="radio" name="optinme" value="0" class="selectgroup-input"<?php echo myvalidate($optinme_cek[0]); ?>>
+                                                <input type="radio" name="optinme" value="0" class="selectgroup-input" <?php echo myvalidate($optinme_cek[0]); ?>>
                                                 <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-times-circle"></i> No</span>
                                             </label>
                                             <label class="selectgroup-item">
-                                                <input type="radio" name="optinme" value="1" class="selectgroup-input"<?php echo myvalidate($optinme_cek[1]); ?>>
+                                                <input type="radio" name="optinme" value="1" class="selectgroup-input" <?php echo myvalidate($optinme_cek[1]); ?>>
                                                 <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-check-circle"></i> Yes</span>
                                             </label>
                                         </div>
@@ -278,11 +259,11 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label>Phone <span class="text-danger">*</span>
-                                        <input type="tel" class="tel form-control" name="phone" id="phone" x-autocompletetype="tel" value="<?php echo isset($mbrstr['phone']) ? $mbrstr['phone'] : ''; ?>" placeholder="Member phone"  required>
-                                    </div> 
+                                            <input type="tel" class="tel form-control" name="phone" id="phone" x-autocompletetype="tel" value="<?php echo isset($mbrstr['phone']) ? $mbrstr['phone'] : ''; ?>" placeholder="Member phone" required>
+                                    </div>
                                     <div class="form-group col-md-3">
                                         <label>Alternative Phone <span class="text-danger"></span>
-                                        <input type="tel" class="tel form-control" name="altphone" id="altphone" x-autocompletetype="tel" value="<?php echo isset($mbrstr['altphone']) ? $mbrstr['altphone'] : ''; ?>" placeholder="Alternative phone no" >
+                                            <input type="tel" class="tel form-control" name="altphone" id="altphone" x-autocompletetype="tel" value="<?php echo isset($mbrstr['altphone']) ? $mbrstr['altphone'] : ''; ?>" placeholder="Alternative phone no">
                                     </div>
                                 </div>
 
@@ -311,78 +292,55 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
                             </div>
 
                             <div class="tab-pane fade" id="cfgtab2" role="tabpanel" aria-labelledby="config-tab2">
-                                <p class="text-muted"><?php echo myvalidate($LANG['m_profilepaynote']); ?></p>
+                                <p class="text-muted"><?php echo myvalidate($LANG['m_profilepaynote']); ?></p>     
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Bank Name</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fa fa-fw fa-university"></i></div>
+                                                </div>
+                                                <input type="text" name="bankname" id="bankname" class="form-control" 
+                                                value="<?php echo base64_decode($mbrstr['bankname']);?>" 
+                                                placeholder="Member Bank Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Account number</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fa fa-fw fa-money-check"></i></div>
+                                                </div>
+                                                <input type="text" name="accountnum" id="accountnum" class="form-control" 
+                                                value="<?php
+                                                    echo (isset($mbrstr['accountnum']) && !empty($mbrstr['accountnum'])) ?
+                                                    base64_decode($mbrstr['accountnum']) : '';
+                                                ?>" 
+                                                placeholder="Member Account Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                     
+                                        <div class="form-group col-md-6">
+                                            <label>IFSC Code</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fa fa-fw fa-info"></i></div>
+                                                </div>
+                                                <input type="text" name="bankifsc" id="bankifsc" class="form-control" 
+                                                value="<?php
+                                                echo (isset($mbrstr['bankifsc']) && !empty($mbrstr['bankifsc'])) ?
+                                                    base64_decode($mbrstr['bankifsc']) : '';
+                                                ?>" 
+                                                placeholder="Member IFSC Code">
+                                            </div>
+                                        </div>
 
-                                <?php
-                                if ($payrow['paypal4usr'] == 1) {
-                                    ?>
-                                    <div class="form-group">
-                                        <label>Paypal Account</label>
-                                        <input type="text" name="paypalacc" id="paypalacc" class="form-control" value="<?php echo isset($mbrstr['paypalacc']) ? base64_decode($mbrstr['paypalacc']) : ''; ?>" placeholder="Your PayPal email address">
                                     </div>
-                                    <?php
-                                }
-                                if ($payrow['coinpayments4usr'] == 1) {
-                                    ?>
-                                    <div class="form-group">
-                                        <label>Bitcoin Address</label>
-                                        <input type="text" name="coinpaymentsmercid" id="coinpaymentsmercid" class="form-control" value="<?php echo isset($mbrstr['coinpaymentsmercid']) ? base64_decode($mbrstr['coinpaymentsmercid']) : ''; ?>" placeholder="Your Bitcoin address">
-                                    </div>
-                                    <?php
-                                }
-                                if ($payrow['manualpay4usr'] == 1) {
-                                    ?>
-                                    <div class="form-group">
-                                        <label><?php echo myvalidate($payrow['manualpayname']); ?></label>
-                                        <textarea name="manualpayipn" class="form-control rowsize-sm" id="manualpayipn" rows="16" placeholder="<?php echo myvalidate($payrow['manualpayname']); ?>"><?php echo isset($mbrstr['manualpayipn']) ? base64_decode($mbrstr['manualpayipn']) : ''; ?></textarea>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
 
                             </div>
 
-                            <div class="tab-pane fade" id="cfgtab3" role="tabpanel" aria-labelledby="config-tab3">
-                                <p class="text-muted"><?php echo myvalidate($LANG['m_profilewebnote']); ?></p>
-
-                                <div class="form-group">
-                                    <label>Site URL</label>
-                                    <input type="text" name="mbrsite_url" id="mbrsite_url" class="form-control" value="<?php echo isset($mbrstr['mbrsite_url']) ? $mbrstr['mbrsite_url'] : ''; ?>" placeholder="Member site URL">
-                                    <input type="hidden" name="mbrsite_url_old" value="<?php echo isset($mbrstr['mbrsite_url']) ? $mbrstr['mbrsite_url'] : ''; ?>">
-                                    <input type="hidden" name="mbrsite_img_old" value="<?php echo isset($mbrstr['mbrsite_img']) ? $mbrstr['mbrsite_img'] : DEFIMG_SITE; ?>">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Site Title</label>
-                                    <input type="text" name="mbrsite_title" id="mbrsite_title" class="form-control" value="<?php echo isset($mbrstr['mbrsite_title']) ? $mbrstr['mbrsite_title'] : ''; ?>" maxlength="<?php echo myvalidate($cfgrow['mbrmax_title_char']); ?>" placeholder="Member site title">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Site Description</label>
-                                    <textarea name="mbrsite_desc" class="form-control rowsize-sm" id="mbrsite_desc" rows="16" maxlength="<?php echo myvalidate($cfgrow['mbrmax_descr_char']); ?>" placeholder="Member site description"><?php echo isset($mbrstr['mbrsite_desc']) ? base64_decode($mbrstr['mbrsite_desc']) : ''; ?></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Site Category</label>
-                                    <select name="mbrsite_cat" id="mbrsite_cat" class="form-control">
-                                        <?php echo myvalidate($mbrsite_cat_menu); ?>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="selectgroup-pills">Display My Site</label>
-                                    <div class="selectgroup selectgroup-pills">
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="showsite" value="0" class="selectgroup-input"<?php echo myvalidate($showsite_cek[0]); ?>>
-                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-times-circle"></i> No</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="showsite" value="1" class="selectgroup-input"<?php echo myvalidate($showsite_cek[1]); ?>>
-                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-check-circle"></i> Yes</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="tab-pane fade" id="cfgtab4" role="tabpanel" aria-labelledby="config-tab4">
                                 <p class="text-muted"><?php echo myvalidate($LANG['m_profilepassnote']); ?></p>
@@ -429,32 +387,32 @@ $faiconcolor = ($mbrstr['mbrstatus'] == 2) ? '<div class="section-header-breadcr
 </div>
 
 <script language="JavaScript" type="text/javascript">
-$(function(){
-  $("input[name='adhar_card']").on('input', function (e) {
-    $(this).val($(this).val().replace(/[^0-9]/g, ''));
-  });
-});
+    $(function() {
+        $("input[name='adhar_card']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
 
-    $(document).ready(function () {
-        $("#mbr_image_btn").on("click", function () {
+    $(document).ready(function() {
+        $("#mbr_image_btn").on("click", function() {
             $("#my_file").click();
         });
-        $("#my_file").on("change", function () {
+        $("#my_file").on("change", function() {
             //alert('=> ' + $("#my_file").val());
             //$("form").submit();
             $("#update_mbr_image")[0].submit();
         });
 
     });
-function verify(){
-    let adhar_card=$('#adhar_card').val();
-    let pan_card=$('#pan_card').val();
-    let phone_number=$('#phone').val();
 
-    if(adhar_card=='' && pan_card=='' && phone_number==''){
-        alert("Please Complete your KYC before any update on your profile");
-        return false;
+    function verify() {
+        let adhar_card = $('#adhar_card').val();
+        let pan_card = $('#pan_card').val();
+        let phone_number = $('#phone').val();
+
+        if (adhar_card == '' && pan_card == '' && phone_number == '') {
+            alert("Please Complete your KYC before any update on your profile");
+            return false;
+        }
     }
-}
-
 </script>

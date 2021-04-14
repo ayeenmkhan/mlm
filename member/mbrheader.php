@@ -78,7 +78,7 @@ $member_content = <<<INI_HTML
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        <title>{$cfgrow['site_name']} {$LANG['g_membercp']}</title>
+        <title>Fastearning Member</title>
 
         <meta name="description" content="{$cfgrow['site_descr']}">
         <meta name="keywords" content="{$cfgrow['site_keywrd']}">

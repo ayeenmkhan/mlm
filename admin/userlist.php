@@ -318,6 +318,7 @@ $userData = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs LEFT JOIN
                                 </a>
                                 <a href="index.php?hal=getuser&getId=<?php echo myvalidate($val['id']); ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="View <?php echo myvalidate($val['username']); ?>"><i class="far fa-fw fa-id-badge"></i></a>
                                 <a href="javascript:;" data-href="edituser.php?editId=<?php echo myvalidate($val['id']); ?>&redir=userlist" data-poptitle="<i class='fa fa-fw fa-edit'></i> Update Member #<?php echo myvalidate($val['id']); ?>" class="btn btn-sm btn-success openPopup" data-toggle="tooltip" title="Update <?php echo myvalidate($val['username']); ?>"><i class="fa fa-fw fa-edit"></i></a>
+                                
                                 <a href="javascript:;" data-href="deluser.php?hash=<?php echo myvalidate($hasdel); ?>&delId=<?php echo myvalidate($val['id']); ?>&redir=userlist" class="btn btn-sm btn-danger bootboxconfirm" data-poptitle="Username: <?php echo myvalidate($val['username']); ?>" data-popmsg="Are you sure want to delete this member?" data-toggle="tooltip" title="Delete <?php echo myvalidate($val['username']); ?>"><i class="far fa-fw fa-trash-alt"></i></a>
                             </td>
 

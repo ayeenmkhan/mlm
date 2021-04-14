@@ -7,10 +7,6 @@ $paypalonarr = array(0, 1);
 $paypalon_cek = radiobox_opt($paypalonarr, $payrow['paypalon']);
 $paypal4usr_cek = checkbox_opt($payrow['paypal4usr']);
 
-$coinpaymentsonarr = array(0, 1);
-$coinpaymentson_cek = radiobox_opt($coinpaymentsonarr, $payrow['coinpaymentson']);
-$coinpayments4usr_cek = checkbox_opt($payrow['coinpayments4usr']);
-
 $manualpayonarr = array(0, 1);
 $manualpayon_cek = radiobox_opt($manualpayonarr, $payrow['manualpayon']);
 $manualpay4usr_cek = checkbox_opt($payrow['manualpay4usr']);
@@ -28,11 +24,6 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         'paypalfee' => $paypalfee,
         'paypalacc' => base64_encode($paypalacc),
         'paypal4usr' => intval($paypal4usr),
-        'coinpaymentson' => intval($coinpaymentson),
-        'coinpaymentsfee' => $coinpaymentsfee,
-        'coinpaymentsmercid' => base64_encode($coinpaymentsmercid),
-        'coinpaymentsipnkey' => base64_encode($coinpaymentsipnkey),
-        'coinpayments4usr' => intval($coinpayments4usr),
         'manualpayon' => intval($manualpayon),
         'manualpaybtn' => $manualpaybtn,
         'manualpayfee' => $manualpayfee,
@@ -67,7 +58,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     exit;
 }
 
-$iconstatuspaystr = ($payrow['paypalon'] == 1 || $payrow['coinpaymentson'] == 1 || $payrow['manualpayon'] == 1) ? "<i class='fa fa-check text-success' data-toggle='tooltip' title='Payment Option is Available'></i>" : "<i class='fa fa-times text-danger' data-toggle='tooltip' title='Payment Option is Unavailable'></i>";
+$iconstatuspaystr = ($payrow['paypalon'] == 1 || $payrow['manualpayon'] == 1) ? "<i class='fa fa-check text-success' data-toggle='tooltip' title='Payment Option is Available'></i>" : "<i class='fa fa-times text-danger' data-toggle='tooltip' title='Payment Option is Unavailable'></i>";
 ?>
 
 <div class="section-header">
@@ -89,9 +80,7 @@ $iconstatuspaystr = ($payrow['paypalon'] == 1 || $payrow['coinpaymentson'] == 1 
                         <li class="nav-item">
                             <a class="nav-link" id="config-paypal" data-toggle="tab" href="#paypaypal" role="tab" aria-controls="paypal" aria-selected="false">RazorPay</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="config-coinpayments" data-toggle="tab" href="#paycoinpayments" role="tab" aria-controls="coinpayments" aria-selected="false">CoinPayments</a>
-                        </li>
+                     
                         <li class="nav-item">
                             <a class="nav-link active" id="config-cash" data-toggle="tab" href="#paycash" role="tab" aria-controls="cash" aria-selected="true">Cash and Bank</a>
                         </li>
@@ -116,18 +105,6 @@ $iconstatuspaystr = ($payrow['paypalon'] == 1 || $payrow['coinpaymentson'] == 1 
                         <div class="tab-content no-padding" id="myTab2Content">
 
                             <div class="tab-pane fade" id="paypaypal" role="tabpanel" aria-labelledby="config-paypal">
-                                <!-- <p class="text-muted">Use this gateway option to accept payment using PayPal.</p>
-                                <p class="text-muted text-small"><em>In order to make this payment method working properly, make sure your current currency <strong> <?php echo myvalidate($bpprow['currencycode']); ?></strong> is supported by this payment option.</em></p>  -->
-
-                       <!--          <div class="form-group">
-                                    <label for="paypalacc">PayPal Account</label>
-                                    <input type="text" name="paypalacc" id="paypalacc" class="form-control" value="<?php echo isset($payrow['paypalacc']) ? base64_decode($payrow['paypalacc']) : ''; ?>" placeholder="PayPal Email Address">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="paypalfee">Gateway Fee</label>
-                                    <input type="text" name="paypalfee" id="paypalfee" class="form-control" value="<?php echo isset($payrow['paypalfee']) ? $payrow['paypalfee'] : '0'; ?>" placeholder="Additional fee">
-                                </div> -->
 
                                 <div class="form-group">
                                     <label for="selectgroup-pills">Gateway Status</label>
@@ -147,50 +124,6 @@ $iconstatuspaystr = ($payrow['paypalon'] == 1 || $payrow['coinpaymentson'] == 1 
                                     <div class="control-label">Member Gateway Status</div>
                                     <label class="custom-switch mt-2">
                                         <input type="checkbox" name="paypal4usr" value="1" class="custom-switch-input"<?php echo myvalidate($paypal4usr_cek); ?>>
-                                        <span class="custom-switch-indicator"></span>
-                                        <span class="custom-switch-description">Allow member to use this payment gateway option</span>
-                                    </label>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane fade" id="paycoinpayments" role="tabpanel" aria-labelledby="config-coinpayments">
-                                <p class="text-muted">Use this gateway option to accept payment using CoinPayments.</p>
-                                <p class="text-muted text-small"><em>In order to make this payment method working properly, make sure your current currency <strong> <?php echo myvalidate($bpprow['currencycode']); ?></strong> is supported by this payment option.</em></p>
-
-                                <div class="form-group">
-                                    <label for="coinpaymentsmercid">Merchant ID</label>
-                                    <input type="text" name="coinpaymentsmercid" id="coinpaymentsmercid" class="form-control" value="<?php echo isset($payrow['coinpaymentsmercid']) ? base64_decode($payrow['coinpaymentsmercid']) : ''; ?>" placeholder="CoinPayments Merchant ID">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="coinpaymentsipnkey">IPN Secret</label>
-                                    <input type="password" name="coinpaymentsipnkey" id="coinpaymentsipnkey" class="form-control" value="<?php echo isset($payrow['coinpaymentsipnkey']) ? base64_decode($payrow['coinpaymentsipnkey']) : ''; ?>" placeholder="CoinPayments IPN Secret">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="coinpaymentsfee">Gateway Fee</label>
-                                    <input type="text" name="coinpaymentsfee" id="coinpaymentsfee" class="form-control" value="<?php echo isset($payrow['coinpaymentsfee']) ? $payrow['coinpaymentsfee'] : '0'; ?>" placeholder="Additional fee">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="selectgroup-pills">Gateway Status</label>
-                                    <div class="selectgroup selectgroup-pills">
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="coinpaymentson" value="0" class="selectgroup-input"<?php echo myvalidate($coinpaymentson_cek[0]); ?>>
-                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-times-circle"></i> Disable</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="radio" name="coinpaymentson" value="1" class="selectgroup-input"<?php echo myvalidate($coinpaymentson_cek[1]); ?>>
-                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-fw fa-check-circle"></i> Enable</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="control-label">Member Gateway Status</div>
-                                    <label class="custom-switch mt-2">
-                                        <input type="checkbox" name="coinpayments4usr" value="1" class="custom-switch-input"<?php echo myvalidate($coinpayments4usr_cek); ?>>
                                         <span class="custom-switch-indicator"></span>
                                         <span class="custom-switch-description">Allow member to use this payment gateway option</span>
                                     </label>
