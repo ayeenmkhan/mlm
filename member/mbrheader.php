@@ -61,6 +61,15 @@ if($mbrstr['ewallet']>='40000.00'){
 //         <li{$menuactive['digiview']}><a class="nav-link" href="index.php?hal=digiview"><i class="fas fa-window-restore"></i><span>{$LANG['m_digiview']}</span></a></li>
 // INI_HTML;
 // }
+
+$banusmenu = '';
+if ($mbrstr['ewallet'] > 1) {
+    $banusmenu = <<<INI_HTML
+                             <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-funnel-dollar"></i><span>Earn Bonuses</span></a></li> 
+INI_HTML;
+}
+
+
 if ($mbrstr['mpid'] > 0) {
     $mbractive_menu = <<<INI_HTML
                             <li class="menu-header">Account</li>
@@ -78,7 +87,7 @@ $member_content = <<<INI_HTML
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        <title>{$cfgrow['site_name']} {$LANG['g_membercp']}</title>
+        <title>Fastearning Member</title>
 
         <meta name="description" content="{$cfgrow['site_descr']}">
         <meta name="keywords" content="{$cfgrow['site_keywrd']}">
@@ -170,10 +179,8 @@ $member_content = <<<INI_HTML
                         <ul class="sidebar-menu">
                             <li class="menu-header">Main</li>
                             <li{$menuactive['dashboard']}><a class="nav-link" href="index.php?hal=dashboard"><i class="fas fa-chart-line"></i><span>{$LANG['g_dashboard']}</span></a></li>
-                            <li{$menuactive['getstarted']}><a class="nav-link" href="index.php?hal=getstarted"><i class="fas fa-funnel-dollar"></i><span>Earn 
-Bonuses</span></a></li>
-                           
-                            {$coursesmenu}
+                            
+                            {$banusmenu}
                             {$mbractive_menu}                         
 
                             <li class="menu-header">Setting</li>

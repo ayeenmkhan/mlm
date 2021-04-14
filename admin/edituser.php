@@ -16,9 +16,6 @@ if (isset($editId) and $editId != "") {
     $rowstr['mbr_twitter'] = $mbr_sosmed['mbr_twitter'];
     $rowstr['mbr_facebook'] = $mbr_sosmed['mbr_facebook'];
 
-    $status_arr = array('0' => 'Inactive', '1' => 'Active', '2' => 'Limited', '3' => 'Pending');
-    $status_menu = select_opt($status_arr, $rowstr['mbrstatus']);
-
     $mpstatus_arr = array('0' => 'Inactive', '1' => 'Active', '2' => 'Expire', '3' => 'Pending');
     $mpstatus_menu = select_opt($mpstatus_arr, $rowstr['mpstatus']);
 
@@ -26,9 +23,6 @@ if (isset($editId) and $editId != "") {
     $country_array = array_map('ucwords', $country_array);
     $country_menu = select_opt($country_array, $rowstr['country']);
 
-    $mbrsite_cat_menu = select_opt($webcategory_array, $rowstr['mbrsite_cat']);
-
-    $showsite_cek = checkbox_opt($rowstr['showsite']);
     $optinme_cek = checkbox_opt($rowstr['optinme']);
 }
 
@@ -73,12 +67,6 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         'firstname' => mystriptag($firstname),
         'lastname' => mystriptag($lastname),
         'password' => $password,
-        'mbrsite_url' => mystriptag($mbrsite_url, 'url'),
-        'mbrsite_title' => mystriptag($mbrsite_title),
-        'mbrsite_desc' => base64_encode(mystriptag($mbrsite_desc)),
-        'mbrsite_cat' => $mbrsite_cat,
-        'mbrsite_img' => $mbrsite_img,
-        'showsite' => $showsite,
         'mbr_image' => $mbr_image,
         'mbr_intro' => base64_encode(mystriptag($mbr_intro)),
         'mbr_sosmed' => $mbr_sosmed,
@@ -87,10 +75,12 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         'country' => $country,
         'optinme' => $optinme,
         'taglabel' => mystriptag($taglabel),
-        'mbrstatus' => $mbrstatus,
         'ewallet' => $ewallet,
-        'epoint' => $epoint,
+        // 'epoint' => $epoint,
         'adminfo' => mystriptag($adminfo),
+        'bankname' => base64_encode(mystriptag($bankname)),
+        'accountnum' => base64_encode(mystriptag($accountnum)),
+        'bankifsc' => base64_encode(mystriptag($bankifsc)),
     );
 
     $data = array_merge($data, $usernamesql);
@@ -132,9 +122,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
             <li class="nav-item text-center">
                 <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="false"><i class="fa fa-fw fa-university"></i><span class="d-none d-sm-block"> Account</span></a>
             </li>
-            <li class="nav-item text-center">
-                <a class="nav-link" id="website-tab" data-toggle="tab" href="#website" role="tab" aria-controls="website" aria-selected="false"><i class="fa fa-fw fa-globe"></i><span class="d-none d-sm-block"> Website</span></a>
-            </li>
+
             <li class="nav-item text-center">
                 <a class="nav-link" id="option-tab" data-toggle="tab" href="#option" role="tab" aria-controls="option" aria-selected="false"><i class="fa fa-fw fa-user-cog"></i><span class="d-none d-sm-block"> Option</span></a>
             </li>
@@ -226,12 +214,12 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                 </div>
 
                 <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Account Status</label>
                         <select name="mbrstatus" id="mbrstatus" class="form-control">
                             <?php echo myvalidate($status_menu); ?>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -244,13 +232,44 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                                 <input type="hidden" name="oldewallet" value="<?php echo isset($rowstr['ewallet']) ? $rowstr['ewallet'] : '0'; ?>">
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label>Total Point</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-fw fa-coins"></i></div>
                                 </div>
                                 <input type="text" name="epoint" id="epoint" class="form-control" value="<?php echo isset($rowstr['epoint']) ? $rowstr['epoint'] : ''; ?>" placeholder="Member available point">
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Bank Name</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-fw fa-university"></i></div>
+                                </div>
+                                <input type="text" name="bankname" id="bankname" class="form-control" value="<?php echo isset($rowstr['bankname']) ? base64_decode($rowstr['bankname']) : ''; ?>" placeholder="Member Bank Name">
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Account Number</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-fw fa-money-check"></i></div>
+                                </div>
+                                <input type="text" name="accountnum" id="accountnum" class="form-control" value="<?php echo isset($rowstr['accountnum']) ?  base64_decode($rowstr['accountnum']) : ''; ?>" placeholder="Member Account Number">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Bank IFSC</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-fw fa-info"></i></div>
+                                </div>
+                                <input type="text" name="bankifsc" id="bankifsc" class="form-control" value="<?php echo isset($rowstr['bankifsc']) ?  base64_decode($rowstr['bankifsc']) : ''; ?>" placeholder="Member Account Number">
                             </div>
                         </div>
                     </div>
@@ -267,41 +286,6 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
                 </div>
 
-                <div class="tab-pane fade" id="website" role="tabpanel" aria-labelledby="website-tab">
-                    <div class="form-group">
-                        <label>Site URL</label>
-                        <input type="text" name="mbrsite_url" id="mbrsite_url" class="form-control" value="<?php echo isset($rowstr['mbrsite_url']) ? $rowstr['mbrsite_url'] : ''; ?>" placeholder="Member site URL">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Site Title</label>
-                        <input type="text" name="mbrsite_title" id="mbrsite_title" class="form-control" value="<?php echo isset($rowstr['mbrsite_title']) ? $rowstr['mbrsite_title'] : ''; ?>" placeholder="Member site title">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Site Description</label>
-                        <textarea name="mbrsite_desc" class="form-control" id="mbrsite_desc" rows="16" placeholder="Member site description"><?php echo isset($rowstr['mbrsite_desc']) ? base64_decode($rowstr['mbrsite_desc']) : ''; ?></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Site Category</label>
-                        <select name="mbrsite_cat" id="mbrsite_cat" class="form-control">
-                            <?php echo myvalidate($mbrsite_cat_menu); ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Site Image or Logo</label>
-                        <input type="text" name="mbrsite_img" id="mbrsite_img" class="form-control" value="<?php echo isset($rowstr['mbrsite_img']) ? $rowstr['mbrsite_img'] : DEFIMG_SITE; ?>" placeholder="Member site image">
-                    </div>
-
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                            <input name="showsite" value="1" type="checkbox" class="custom-control-input" id="showsite"<?php echo myvalidate($showsite_cek); ?>>
-                            <label class="custom-control-label" for="showsite">Display Member Site</label>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="tab-pane fade" id="option" role="tabpanel" aria-labelledby="option-tab">
                     <div class="form-row">
@@ -318,14 +302,14 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input name="optinme" value="1" type="checkbox" class="custom-control-input" id="optinme"<?php echo myvalidate($optinme_cek); ?>>
+                            <input name="optinme" value="1" type="checkbox" class="custom-control-input" id="optinme" <?php echo myvalidate($optinme_cek); ?>>
                             <label class="custom-control-label" for="optinme">Opt-in for Notifications</label>
                         </div>
                     </div>
 
                     <?php
                     if ($rowstr['mpid'] > 0) {
-                        ?>
+                    ?>
                         <hr>
                         <div class="form-group">
                             <label>Member Payplan Status</label>
@@ -333,7 +317,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                                 <?php echo myvalidate($mpstatus_menu); ?>
                             </select>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </div>
@@ -359,8 +343,8 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $(document).ready(function() {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
             localStorage.setItem('activeTab<?php echo isset($editId) ? $editId : 'U' ?>', $(e.target).attr('href'));
         });
 

@@ -101,13 +101,7 @@ if (isset($FORM['getId']) and $FORM['getId'] != "") {
             </div>
 
             <article class="article mt-4">
-                <div class="article-header">
-                    <div class="article-image" data-background="<?php echo myvalidate($planlogo); ?>">
-                    </div>
-                    <div class="article-title">
-                        <h2 class="badge badge-primary"><?php echo ($bpprow['ppname']) ? myvalidate($bpprow['ppname']) : $cfgrow['site_name']; ?> - <?php echo ($bpprow['regfee'] > 0) ? myvalidate($bpprow['currencysym'] . $bpprow['regfee'] . ' ' . $bpprow['currencycode']) : 'FREE'; ?></h2>
-                    </div>
-                </div>
+               
                 <div class="article-details">
                     <div><?php echo ($bpprow['planinfo']) ? myvalidate($bpprow['planinfo']) : '-'; ?></div>
                     <div class='article-cta mt-4'>
@@ -164,22 +158,13 @@ if (isset($FORM['getId']) and $FORM['getId'] != "") {
                                 <h6><?php echo myvalidate($countrystr); ?></h6>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label>Website <?php echo myvalidate($showsite_cekicon); ?></label>
-                                <div class="text-muted font-weight-normal"><?php echo myvalidate($mbrsite_catstr); ?></div>
-                                <h6><a href="<?php echo myvalidate($rowstr['mbrsite_url']); ?>" target="_blank"><?php echo myvalidate($rowstr['mbrsite_title']); ?></a></h6>
-                                <div class="text-muted form-text">
-                                    <?php echo base64_decode($rowstr['mbrsite_desc']); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                      
+                        <!-- <div class="row">
                             <div class="form-group col-12">
                                 <label>Subscribe to notifications</label>
                                 <h6><?php echo myvalidate($optinme_cekstr); ?></h6>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-12"><?php
                                 if ($mbr_twitter) {
