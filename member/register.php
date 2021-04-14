@@ -390,8 +390,8 @@ $_SESSION['show_msg'] = '';
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="email">Mobile Number <span class="text-danger">*</span></label>
-                                        <input id="phone" type="number" class="form-control" name="phone" value="<?php echo myvalidate($_SESSION['phone']); ?>" Placeholder="Enter Number with country code" required>
+                                        <label for="email">Mobile Number <span id="resultNumMbr" class="text-danger">*</span></label>
+                                        <input id="phone" type="number" class="form-control" name="phone" value="<?php echo myvalidate($_SESSION['phone']); ?>" onBlur="checkMember('num2i', this.value, '')" Placeholder="Enter Number with country code" required>
                                         <div class="invalid-feedback">
                                             Please fill in your valid Phone Number
                                         </div>

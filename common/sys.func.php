@@ -502,7 +502,7 @@ function getmbrinfo($id, $bfield = 'id', $mpid = 0) {
 
     // plan member
     if ($mpid > 0) {
-        $row = $db->getAllRecords(DB_TBLPREFIX . '_mbrplans', '*', ' AND mpid = "' . $mpid . '"');
+        $row = $db->getAllRecords(DB_TBLPREFIX . '_mbrplans', '*', ' AND idmbr = "' . $mpid . '"');
         foreach ($row as $value) {
             $userRow = array_merge($userRow, $value);
         }

@@ -226,13 +226,25 @@ function checkRefreeMember(agv, dataval, dataid) {
     });
 }
 function checkMember(agv, dataval, dataid) {
-    $("#resultGetMbr" + dataid).html("<i class='fas fa-cog fa-spin'></i>");
+    // alert(agv);
+      if(agv==='num2i'){
+                 $("#resultNumMbr" + dataid).html("<i class='fas fa-cog fa-spin'></i>");
+             }else{
+                   $("#resultGetMbr" + dataid).html("<i class='fas fa-cog fa-spin'></i>");
+    }
+    
     jQuery.ajax({
         url: "../common/index.php",
         data: 'agv=' + agv + '-' + dataval,
         type: "POST",
         success: function (data) {
-            $("#resultGetMbr" + dataid).html(data);
+            // console.log("request type is ",agv)
+            if(agv==='num2i'){
+                 $("#resultNumMbr" + dataid).html(data);
+             }else{
+                $("#resultGetMbr" + dataid).html(data);
+             }
+           
         },
         error: function () {
         }

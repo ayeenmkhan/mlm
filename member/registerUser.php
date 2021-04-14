@@ -48,15 +48,16 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
     }
 
     // if new username exist, keep using old username
-    $condition = ' AND username LIKE "' . $username . '" ';
+    $condition = ' AND username LIKE "' . $username . '" OR phone LIKE "'.$phone.'"';
     $sql = $db->getRecFrmQry("SELECT * FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition . "");
 
+    // var_dump($sql);exit;
     if ($isrecapv3 == 0) {
         $_SESSION['show_msg'] = showalert('warning', 'Error!', 'Recaptcha failed, please try it again!');
         $redirval = "?res=rcapt";
     } elseif (count($sql) > 0) {
-        $_SESSION['show_msg'] = showalert('danger', 'Error!', 'Username already exist!');
-        $redirval = "?res=exist";
+        $_SESSION['show_msg'] = showalert('danger', 'Error!', 'Username / Phone Number already exist!');
+        $redirval = SURL . "/member/register.php?res=exist";
     } else {
 
         // if (!dumbtoken($dumbtoken)) {
@@ -75,7 +76,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
         $passres = passmeter($password);
         if ($password != $passwordconfirm) {
             $_SESSION['show_msg'] = showalert('danger', 'Password Mismatch', 'Both entered passwords must be the same. Please try it again!');
-            $redirval = SURL . "/member/register.php?res=errpass";;
+            $redirval = SURL . "/member/register.php?res=errpass";
         } elseif ($passres == 1) {
             $password = getpasshash($password);
             $data = array(
@@ -93,9 +94,9 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
                 // var_dump($data);exit();
             $insert = $db->insert(DB_TBLPREFIX . '_mbrs', $data);
             $newmbrid = $db->lastInsertId();
-            // $newmbrid = 1;
+            // $insert = 1;
 
-            $_SESSION['firstname'] = $_SESSION['lastname'] = $_SESSION['username'] = $_SESSION['email'] = '';
+            $_SESSION['firstname'] = $_SESSION['lastname'] = $_SESSION['username'] =  $_SESSION['email'] = $_SESSION['phone']='';
 
             $_SESSION['customer_name']= $firstname . ' ' . $lastname;
             $_SESSION['customer_email']= $email;
@@ -127,10 +128,18 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
 
              /*Send Verification code through SMS*/
                 $smsResponse= sendVerificationCode($phone,$six_digit_random_number);
-                if($smsResponse){
+                if($smsResponse->status=='success'){
                 $amount= (int)$package*100;
                 $redirval = SURL . "/member/validate_phone.php?user_id=".$newmbrid."&package=".$amount."";
                 
+                }else{
+                      $condition = "AND id='".$newmbrid."'";
+                $db->deleteQry("DELETE FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition);
+
+                $mbrplan_condition = "AND idmbr='".$newmbrid."'";
+                $db->deleteQry("DELETE FROM " . DB_TBLPREFIX . "_mbrplans WHERE 1 " . $condition);
+                    $_SESSION['show_msg'] = showalert('danger', 'SMS SENDING', 'OTP not sent. Please try it again!');
+                    $redirval = SURL . "/member/register.php?res=errpass";
                 }
             
                 // var_dump($redirval);exit;

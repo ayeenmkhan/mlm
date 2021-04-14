@@ -17,13 +17,23 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
             $data = array(
                 'phone_valid' => 1,
             );
+             $updatedata = array(
+                'validation_code' => '',
+            );
             $update = $db->update(DB_TBLPREFIX . '_mbrs', $data,array('validation_code' => $validation_code));
+             $db->update(DB_TBLPREFIX . '_mbrs', $updatedata,array('id' => $user_id));
            // var_dump($update);exit();
             if($update){
-                $_SESSION['dotoaster'] = "toastr.success('Phone Number Verified Successfuly!', 'Success')";
-                echo $redirval = SURL . "/member/razorpay.php?user_id=".$user_id."&package=".$package."";
+                $_SESSION['show_msg'] = showalert('success', 'Success!', 'Phone Number Verified Successfuly!.');
+                $redirval = SURL . "/member/razorpay.php?user_id=".$user_id."&package=".$package."";
             }else{
-                   $_SESSION['dotoaster'] = "toastr.success('Invalid Verification Code!', 'danger')";
+                $condition = "AND id='".$user_id."'";
+                $db->deleteQry("DELETE FROM " . DB_TBLPREFIX . "_mbrs WHERE 1 " . $condition);
+
+                $mbrplan_condition = "AND idmbr='".$user_id."'";
+                $db->deleteQry("DELETE FROM " . DB_TBLPREFIX . "_mbrplans WHERE 1 " . $condition);
+
+                $_SESSION['show_msg'] = showalert('warning', 'Error!', 'Mobile Verification Failed Please try again.');
                 $redirval = SURL . "/member/register.php?res=exist";;
             }
     // $redirval = $cfgrow['site_url'] . "/member/razorpay.php?user_id=".$newmbrid."";
@@ -44,7 +54,7 @@ if (isset($FORM['dosubmit']) and $FORM['dosubmit'] == '1') {
       <div class="modal-body text-center">
         <div class="loader"></div>
         <div clas="loader-txt">
-          <p>Please enter <b>OTP</b> recived on your phone. <br><small>to verify your phone number</small></p>
+          <p>Please enter <b>OTP</b> received on your phone. <br><small>to verify your phone number</small></p>
           <input type="text" name="validation_code" class="form-control" placeholder="Your OTP Goes Here">
 
         </div>

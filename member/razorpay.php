@@ -19,19 +19,19 @@ include('../common/pub.header.php');
         data-key="rzp_test_g1aycQarSCuQfe"
         data-amount="<?php echo $_GET['package'];?>"
         data-buttontext="Pay with Razorpay"
-        data-name="systemSX.com"
-        data-description="MLM Registeration with RazorPay"
+        data-name="Fast Earning"
+        data-description="FastEarning Registeration with RazorPay"
         data-image="http://doliyastore.com/bundle-package/assets/imagextra/site_logo.jpg"
         data-prefill.name="<?php echo $_SESSION['customer_name'];?>"
         data-prefill.email="<?php echo $_SESSION['customer_email'];?>"
-        data-prefill.contact=""
+        data-prefill.contact="<?php echo $_SESSION['phone'];?>"
         data-theme.color="#F37254"
     ></script>
     <input type="hidden" name="user_id" value="<?php echo $_GET['user_id'];?>">
     <input type="hidden" value="Hidden Element" name="hidden">
     </form>
  <?php
-$_SESSION['firstname'] = $_SESSION['lastname'] = $_SESSION['username'] = $_SESSION['email'] = '';
+$_SESSION['firstname'] = $_SESSION['lastname'] = $_SESSION['username'] = $_SESSION['email'] = $_SESSION['phone'] = '';
 include('../common/pub.footer.php');
 ?>
  <script>

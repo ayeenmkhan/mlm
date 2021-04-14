@@ -26,8 +26,11 @@ if ($FORM['agv'] != '') {
     } elseif ($key == 'em2i') {
         // email to member info
         $condition = ' AND email = "' . $value . '"';
-    } else {
-        
+    } elseif ($key=='num2i') {
+        /*Number to member info*/
+        $condition = ' AND phone = "' . $value . '"';
+    }else{
+
     }
 
     if ($condition != '') {
@@ -38,6 +41,14 @@ if ($FORM['agv'] != '') {
             $mbrRow = array_merge($mbrRow, $value);
         }
         if ($key == 'unex') {
+            if ($mbrRow['id'] > 0 || $value == '') {
+                // if username NOT available
+                echo "<i class='far fa-times-circle fa-fw text-danger'></i>";
+            } else {
+                // otherwise
+                echo "<i class='far fa-check-circle fa-fw text-success'></i>";
+            }
+        }elseif($key=='num2i'){
             if ($mbrRow['id'] > 0 || $value == '') {
                 // if username NOT available
                 echo "<i class='far fa-times-circle fa-fw text-danger'></i>";

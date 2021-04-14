@@ -308,7 +308,7 @@ $baseUrl = dirname(dirname($d_Url));
                     <div class="alert-icon text-success"><i class="far fa-bell"></i></div>
                     <div class="alert-body text-success">
                         <div class="alert-title">Hello, <?php echo $mbrstr['fullname'];?> </div>
-                        <p>Welcome to MLM, We're glad you've Joined Our Platform.</p>
+                        <p>Welcome to Fastearning, We're glad you've Joined Our Platform.</p>
                         <div class="float-right mt-4">
                         
                         </div>

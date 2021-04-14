@@ -328,51 +328,45 @@ function redirpageto($destinationurl, $delay = 0) {
     exit;
 }
 
-function sendVerificationCode($phone,$validation_code){
+function sendVerificationCode($phone,$otp){
 
-    return true;
-//         echo "<pre>";print_r($validation_code);
-//         echo "<pre>";print_r($phone);
-//         // Account details
-//     $apiKey = urlencode('YzYzOTQzZDJmZDdlY2I1MGJlYWQ0MDEyYjFkZjFkMjA=');
-    
-//     // Message details
-//     // $numbers = array(918123456789, 918987654321);
-//     // $numbers = '+'.$phone;
-//     $numbers = '913322343234';
-//     $sender = urlencode('SystemX MLM');
-//     $message = rawurlencode('Your Varification Code is : '.$validation_code);
- 
-//     // $numbers = implode(',', $numbers);
- 
-//     // Prepare data for POST request
-//     $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
-//     echo "<pre>";print_r($data);
+// Account details
+$apiKey = urlencode('YzYzOTQzZDJmZDdlY2I1MGJlYWQ0MDEyYjFkZjFkMjA=');
+// Message details
+// $numbers = array(917742299218);
+$numbers = array($phone);
+$sender = urlencode('FSTERN');
+$message = rawurlencode("Thank you for connecting with us,
+Here is your registration OTP :- $otp Don not share this OTP.
 
-//     // Send the POST request with cURL
-//     $ch = curl_init('https://api.textlocal.in/send/');
-//     curl_setopt($ch, CURLOPT_POST, true);
-//     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+Regards,
+Fastearning Team");
 
-//     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);    
-//     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-//     curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//     $response = curl_exec($ch);
+$numbers = implode(',', $numbers);
+
+// Prepare data for POST request
+$data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
+
+// Send the POST request with cURL
+$ch = curl_init('https://api.textlocal.in/send/');
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);    
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+$response = curl_exec($ch);    
+if(curl_errno($ch)){
+    $error_msg = curl_error($ch);
+}
+    curl_close($ch);
+if (isset($error_msg)) {
+    // TODO - Handle cURL error accordingly
+    echo "<pre>";print_r($error_msg);exit();
+}
+    // Process your response here
+    // echo "<pre>";print_r($response);exit();
     
-//     if(curl_errno($ch)){
-//     $error_msg = curl_error($ch);
-// }
-// curl_close($ch);
-// if (isset($error_msg)) {
-//     // TODO - Handle cURL error accordingly
-//     echo "<pre>";print_r($error_msg);
-// }
-//     // Process your response here
-//     echo "<pre>";print_r($response);exit();
-    
-//     echo $response;
+    return json_decode($response);
 
 }
 
